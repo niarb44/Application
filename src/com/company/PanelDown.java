@@ -1,4 +1,6 @@
 package com.company;
 
-public class PanelDown {
+import javax.swing.*;
+
+public class PanelDown extends JPanel {
 }
