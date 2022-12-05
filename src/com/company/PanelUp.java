@@ -1,10 +1,14 @@
 package com.company;
 
 import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class PanelUp extends JPanel {
 
-    JButton button = new JButton("BUTTON");
+    private JButton button = new JButton("BUTTON");
+    private JMenuBar menuBar = new JMenuBar();
 
     PanelUp(){
         initComponentsPanel();
@@ -13,5 +17,6 @@ public class PanelUp extends JPanel {
     public void initComponentsPanel(){
         this.add(button);
     }
+
 
 }

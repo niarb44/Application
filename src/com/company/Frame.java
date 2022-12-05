@@ -5,11 +5,12 @@ import java.awt.*;
 
 public class Frame extends JFrame {
 
-    PanelUp panelUp = new PanelUp();
-    PanelDown panelDown = new PanelDown();
-    PanelRight panelRight = new PanelRight();
-    PanelLeft panelLeft = new PanelLeft();
-    PanelCenter panelCenter = new PanelCenter();
+    private PanelUp panelUp = new PanelUp();
+    private PanelDown panelDown = new PanelDown();
+    private PanelRight panelRight = new PanelRight();
+    private PanelLeft panelLeft = new PanelLeft();
+    private PanelCenter panelCenter = new PanelCenter();
+    private MenuBarApplication menuBarApplication = new MenuBarApplication();
 
     Frame(){
         setComponentsFrame();
@@ -24,6 +25,7 @@ public class Frame extends JFrame {
 
         this.setTitle("Application");
         this.setBounds(400, 300, 300, 300);
+        this.setJMenuBar(menuBarApplication);
         this.pack();
         this.setResizable(true);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

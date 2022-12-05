@@ -4,7 +4,7 @@ import javax.swing.*;
 
 public class PanelLeft extends JPanel {
 
-    JButton button = new JButton("BUTTON");
+    private JButton button = new JButton("BUTTON");
 
     PanelLeft(){
         initComponentsPanel();
