@@ -13,5 +13,5 @@ public class PanelUp extends JPanel {
     public void initComponentsPanel(){
         this.add(button);
     }
-dsdsfsdf
+
 }
