@@ -5,7 +5,7 @@ import java.awt.*;
 
 public class PanelLeft extends JPanel {
 
-    private TextField textLeft = new TextField("test text");
+    private TextArea textLeft = new TextArea("test text");
 
     PanelLeft(){
         initComponentsPanel();

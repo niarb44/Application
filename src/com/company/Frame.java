@@ -24,7 +24,7 @@ public class Frame extends JFrame {
         this.getContentPane().add(panelCenter, BorderLayout.CENTER);
 
         this.setTitle("Application");
-        this.setBounds(400, 300, 300, 300);
+        this.setBounds(0, 150, 300, 300);
         this.setJMenuBar(menuBarApplication);
         this.pack();
         this.setResizable(true);

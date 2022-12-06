@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 
 public class PanelUp extends JPanel {
 
-    private TextField textUp = new TextField("test text");
+    private TextArea textUp = new TextArea("test text");
     private JMenuBar menuBar = new JMenuBar();
 
     PanelUp(){
