@@ -1,17 +1,18 @@
 package com.company;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class PanelCenter extends JPanel {
 
-    private JButton button = new JButton("BUTTON");
+    private TextField textCenter = new TextField("test text");
 
     PanelCenter(){
         initComponentsPanel();
     }
 
     public void initComponentsPanel(){
-        this.add(button);
+        this.add(textCenter);
     }
 
 }

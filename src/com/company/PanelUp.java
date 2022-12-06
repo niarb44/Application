@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 
 public class PanelUp extends JPanel {
 
-    private JButton button = new JButton("BUTTON");
+    private TextField textUp = new TextField("test text");
     private JMenuBar menuBar = new JMenuBar();
 
     PanelUp(){
@@ -15,7 +15,7 @@ public class PanelUp extends JPanel {
     }
 
     public void initComponentsPanel(){
-        this.add(button);
+        this.add(textUp);
     }
 
 
