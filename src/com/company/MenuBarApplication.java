@@ -1,14 +1,10 @@
 package com.company;
 
 import javax.swing.*;
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class MenuBarApplication extends JMenuBar {
 
     private JCheckBoxMenuItem onlyForRead = new JCheckBoxMenuItem("only for read");
-    private JRadioButtonMenuItem radio;
 
     MenuBarApplication() {
         initComponents();
