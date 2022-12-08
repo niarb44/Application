@@ -16,7 +16,7 @@ public class Frame extends JFrame {
 
         this.setTitle("Application");
         this.setLocation(400, 250);
-        this.setPreferredSize(new Dimension(290, 350));
+        this.setPreferredSize(new Dimension(430, 350));
 
         this.setJMenuBar(menuBarApplication);
         this.getContentPane().add(tabbedPane);

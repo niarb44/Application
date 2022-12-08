@@ -12,8 +12,8 @@ public class PanelCenter extends JPanel {
     }
 
     public void initComponentsPanel(){
-        this.setPreferredSize(new Dimension(200, 250));
-        textCenter.setPreferredSize(new Dimension(200, 250));
+        this.setPreferredSize(new Dimension(280, 250));
+        textCenter.setPreferredSize(new Dimension(280, 250));
 
         this.add(textCenter);
     }

@@ -5,17 +5,25 @@ import java.awt.*;
 
 public class PanelLeft extends JPanel {
 
-    private JCheckBox textLeft = new JCheckBox("test");
+    private JCheckBox optionLeft1, optionLeft2, optionLeft3, optionLeft4;
 
     PanelLeft(){
         initComponentsPanel();
     }
 
     public void initComponentsPanel(){
-        this.setPreferredSize(new Dimension(50, 250));
-        textLeft.setPreferredSize(new Dimension(50, 250));
+        optionLeft1 = new JCheckBox("TO-DO");
+        optionLeft2 = new JCheckBox("Finance");
+        optionLeft3 = new JCheckBox("Images");
+        optionLeft4 = new JCheckBox("scratchpad");
 
-        this.add(textLeft);
+        this.setPreferredSize(new Dimension(110, 250));
+      //  textLeft.setPreferredSize(new Dimension(50, 250));
+
+        this.add(optionLeft1);
+        this.add(optionLeft2);
+        this.add(optionLeft3);
+        this.add(optionLeft4);
     }
 
 }

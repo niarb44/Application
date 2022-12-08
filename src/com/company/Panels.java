@@ -15,7 +15,7 @@ public class Panels extends JPanel {
 
     public void setComponentsPanels(){
 
-        this.setPreferredSize(new Dimension(250, 250));
+        this.setPreferredSize(new Dimension(310, 250));
 
        // this.setLayout(new BorderLayout());
         this.add(panelLeft/*, BorderLayout.LINE_START*/);
