@@ -23,7 +23,6 @@ public class TabbedPane extends JTabbedPane {
         this.addTab("tab 1", panels);
         //this.setMnemonicAt(0, KeyEvent.VK_1);
         panels2 = new Panels();
-        //this.addTab("tab 2", panels2);
         this.addTab("tab 2", panel1);
 
     }

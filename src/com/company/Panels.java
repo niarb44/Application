@@ -20,7 +20,6 @@ public class Panels extends JPanel {
        // this.setLayout(new BorderLayout());
         this.add(panelLeft/*, BorderLayout.LINE_START*/);
         this.add(panelCenter/*, BorderLayout.CENTER*/);
-        //this.add(panelRight, BorderLayout.LINE_END);
 
     }
 
