@@ -17,6 +17,7 @@ public class TabbedPane extends JTabbedPane {
 
     public void initComponentsPanel(){
 
+        this.setPreferredSize(new Dimension(250, 250));
         panel1.add(text);
 
         this.addTab("tab 1", panels);

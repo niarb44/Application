@@ -1,6 +1,7 @@
 package com.company;
 
 import javax.swing.*;
+import java.awt.*;
 
 public class Frame extends JFrame {
 
@@ -14,7 +15,8 @@ public class Frame extends JFrame {
     public void setComponentsFrame(){
 
         this.setTitle("Application");
-        this.setBounds(0, 150, 300, 300);
+        this.setLocation(400, 250);
+        this.setPreferredSize(new Dimension(290, 350));
 
         this.setJMenuBar(menuBarApplication);
         this.getContentPane().add(tabbedPane);
