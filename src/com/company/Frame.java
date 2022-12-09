@@ -22,7 +22,7 @@ public class Frame extends JFrame {
         this.getContentPane().add(tabbedPane);
 
         this.pack();
-        this.setResizable(true);
+        this.setResizable(false);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
 
