@@ -2,16 +2,28 @@ package com.company;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
 
 public class PanelLeft extends JPanel {
 
 
-    String[] labels = {"TO-DO", "Finance", "Images", "Scratchpad"};
-    String[] labels2 = {"A", "B", "C", "D"};
-    JList list = new JList(labels);
-    JList list2 = new JList(labels2);
+    DefaultListModel<String> labels1 = new DefaultListModel<>();
+    DefaultListModel<String> labels2 = new DefaultListModel<>();
+    JList<String> list1 = new JList<>(labels1);
+    JList<String> list2 = new JList<>(labels2);
+    PanelCenter panelCenter = new PanelCenter();
+    JButton button1 = new JButton("ADD");
+    JButton button2 = new JButton("DEL");
+    JButton button_1 = new JButton("BACK");
+
+
+
     MyMouseAdapter myMouseAdapter = new MyMouseAdapter();
 
     PanelLeft() {
@@ -19,18 +31,40 @@ public class PanelLeft extends JPanel {
     }
 
     public void initComponentsPanel() {
+        labels1.addElement("TO-DO");
+        labels1.addElement("Finance");
+        labels1.addElement("Images");
+        labels1.addElement("Scratchpad");
+        labels2.addElement("Test-1");
+        labels2.addElement("Test-2");
 
+        this.setLayout(new BorderLayout());
         this.setPreferredSize(new Dimension(110, 250));
-        list.setPreferredSize(new Dimension(110, 250));
-        list2.setPreferredSize(new Dimension(110, 250));
+        list1.setPreferredSize(new Dimension(110, 200));
+        list2.setPreferredSize(new Dimension(110, 200));
+        button1.setPreferredSize(new Dimension(55, 50));
+        button2.setPreferredSize(new Dimension(55, 50));
+        button_1.setPreferredSize(new Dimension(110, 50));
+        button1.setFont(new Font("Arial", Font.PLAIN, 9));
+        button2.setFont(new Font("Arial", Font.PLAIN, 9));
+        button_1.setFont(new Font("Arial", Font.PLAIN, 9));
 
-        this.add(list);
+        this.add(list1, BorderLayout.PAGE_START);
+        this.add(button1, BorderLayout.LINE_START);
+        this.add(button2, BorderLayout.LINE_END);
 
-        list.addMouseListener(myMouseAdapter);
-
+        list1.addMouseListener(myMouseAdapter);
     }
 
-    class MyMouseAdapter extends MouseAdapter{
+   public void changeViews(String ss){
+        labels1.addElement(ss);
+        this.remove(list1);
+        this.add(list1, BorderLayout.PAGE_START);
+        this.revalidate();
+        this.repaint();
+    }
+
+    public class MyMouseAdapter extends MouseAdapter{
         @Override
         public void mouseClicked(MouseEvent e) {
             JList listSource = (JList) e.getSource();
@@ -41,8 +75,11 @@ public class PanelLeft extends JPanel {
                     System.out.println(objList.toString());
                     if(objList.toString().equals("TO-DO")){
                         System.out.println("!!!!!!!!!!!!!!!!!!!!");
-                        PanelLeft.this.remove(list);
-                        PanelLeft.this.add(list2);
+                        PanelLeft.this.remove(list1);
+                        PanelLeft.this.remove(button1);
+                        PanelLeft.this.remove(button2);
+                        PanelLeft.this.add(list2, BorderLayout.PAGE_START);
+                        PanelLeft.this.add(button_1, BorderLayout.LINE_END);
                         PanelLeft.this.revalidate();
                         PanelLeft.this.repaint();
                     }
@@ -51,6 +88,32 @@ public class PanelLeft extends JPanel {
         }
     }
 
-}
+    public class MySaveListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            labels2.addElement("Test-3");
+            PanelLeft.this.remove(0);
+            PanelLeft.this.add(list2);
+            PanelLeft.this.revalidate();
+            PanelLeft.this.repaint();
+            System.out.println(labels2.getElementAt(2));
+
+            try{
+                ObjectOutputStream outS = new ObjectOutputStream(new FileOutputStream(panelCenter.textCenter1.getText()+".txt"));
+                outS.defaultWriteObject();
+                outS.close();
+            }
+            catch(IOException error){
+                System.out.println(error.getMessage());
+            }
+
+
+        }
+
+    }
+
+    }
+
 
 

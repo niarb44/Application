@@ -2,25 +2,38 @@ package com.company;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class Panels extends JPanel {
 
-    //private PanelRight panelRight = new PanelRight();
     private PanelLeft panelLeft = new PanelLeft();
     private PanelCenter panelCenter = new PanelCenter();
+    String title = "";
+    MyListener myListener = new MyListener();
 
-    Panels(){
+    Panels() {
         setComponentsPanels();
     }
 
-    public void setComponentsPanels(){
+    public void setComponentsPanels() {
 
         this.setPreferredSize(new Dimension(310, 250));
 
-       // this.setLayout(new BorderLayout());
-        this.add(panelLeft/*, BorderLayout.LINE_START*/);
-        this.add(panelCenter/*, BorderLayout.CENTER*/);
+        this.add(panelLeft);
+        this.add(panelCenter);
+
+        panelLeft.button1.addActionListener(myListener);
 
     }
 
+    public class MyListener implements ActionListener {
+
+        @Override
+        public void actionPerformed(ActionEvent e) {
+                title = panelCenter.textCenter1.getText();
+                panelLeft.changeViews(title);
+        }
+
+    }
 }
