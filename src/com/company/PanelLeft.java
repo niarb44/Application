@@ -21,6 +21,7 @@ public class PanelLeft extends JPanel {
     JButton button1 = new JButton("ADD");
     JButton button2 = new JButton("DEL");
     JButton button_1 = new JButton("BACK");
+    JPanel testPanel = new JPanel();
 
 
 
@@ -37,11 +38,14 @@ public class PanelLeft extends JPanel {
         labels1.addElement("Scratchpad");
         labels2.addElement("Test-1");
         labels2.addElement("Test-2");
+        testPanel.add(new JCheckBox("Test-1"));
+        testPanel.add(new JCheckBox("Test-2"));
 
         this.setLayout(new BorderLayout());
         this.setPreferredSize(new Dimension(110, 250));
         list1.setPreferredSize(new Dimension(110, 200));
         list2.setPreferredSize(new Dimension(110, 200));
+        testPanel.setPreferredSize(new Dimension(110, 200));
         button1.setPreferredSize(new Dimension(55, 50));
         button2.setPreferredSize(new Dimension(55, 50));
         button_1.setPreferredSize(new Dimension(110, 50));
@@ -78,7 +82,7 @@ public class PanelLeft extends JPanel {
                         PanelLeft.this.remove(list1);
                         PanelLeft.this.remove(button1);
                         PanelLeft.this.remove(button2);
-                        PanelLeft.this.add(list2, BorderLayout.PAGE_START);
+                        PanelLeft.this.add(testPanel, BorderLayout.PAGE_START);
                         PanelLeft.this.add(button_1, BorderLayout.LINE_END);
                         PanelLeft.this.revalidate();
                         PanelLeft.this.repaint();
@@ -92,12 +96,12 @@ public class PanelLeft extends JPanel {
 
         @Override
         public void actionPerformed(ActionEvent e) {
-            labels2.addElement("Test-3");
+            testPanel.add(new JCheckBox("Test-3"));
             PanelLeft.this.remove(0);
-            PanelLeft.this.add(list2);
+            PanelLeft.this.add(testPanel);
             PanelLeft.this.revalidate();
             PanelLeft.this.repaint();
-            System.out.println(labels2.getElementAt(2));
+            //System.out.println(labels2.getElementAt(2));
 
             try{
                 ObjectOutputStream outS = new ObjectOutputStream(new FileOutputStream(panelCenter.textCenter1.getText()+".txt"));
