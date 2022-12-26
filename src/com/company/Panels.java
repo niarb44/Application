@@ -9,7 +9,6 @@ public class Panels extends JPanel {
 
     private PanelLeft panelLeft = new PanelLeft();
     private PanelCenter panelCenter = new PanelCenter();
-    String title = "";
     MyListener myListener = new MyListener();
 
     Panels() {
@@ -24,15 +23,21 @@ public class Panels extends JPanel {
         this.add(panelCenter);
 
         panelLeft.button1.addActionListener(myListener);
+        panelLeft.button2.addActionListener(myListener);
 
     }
 
     public class MyListener implements ActionListener {
-
+        String title = "";
         @Override
         public void actionPerformed(ActionEvent e) {
+            if(e.getSource()==panelLeft.button1) {
                 title = panelCenter.textCenter1.getText();
-                panelLeft.changeViews(title);
+                panelLeft.changeAddViews(title);
+            }
+            if(e.getSource()==panelLeft.button2) {
+                panelLeft.changeDelView();
+            }
         }
 
     }

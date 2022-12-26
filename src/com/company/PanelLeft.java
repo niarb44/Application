@@ -41,7 +41,7 @@ public class PanelLeft extends JPanel {
         testPanel.add(new JCheckBox("Test-1"));
         testPanel.add(new JCheckBox("Test-2"));
 
-        this.setLayout(new BorderLayout());
+
         this.setPreferredSize(new Dimension(110, 250));
         list1.setPreferredSize(new Dimension(110, 200));
         list2.setPreferredSize(new Dimension(110, 200));
@@ -53,17 +53,49 @@ public class PanelLeft extends JPanel {
         button2.setFont(new Font("Arial", Font.PLAIN, 9));
         button_1.setFont(new Font("Arial", Font.PLAIN, 9));
 
+        this.setLayout(new BorderLayout());
         this.add(list1, BorderLayout.PAGE_START);
         this.add(button1, BorderLayout.LINE_START);
         this.add(button2, BorderLayout.LINE_END);
 
         list1.addMouseListener(myMouseAdapter);
+        button_1.addMouseListener(myMouseAdapter);
     }
 
-   public void changeViews(String ss){
+   public void changeAddViews(String ss){
         labels1.addElement(ss);
         this.remove(list1);
         this.add(list1, BorderLayout.PAGE_START);
+        this.revalidate();
+        this.repaint();
+    }
+    public void changeDelView(){
+        int selectedIndex = list1.getSelectedIndex();
+        if (selectedIndex != -1) {
+            labels1.remove(selectedIndex);
+        }
+        this.remove(list1);
+        this.add(list1, BorderLayout.PAGE_START);
+        this.revalidate();
+        this.repaint();
+    }
+    public void myFirstView(){
+        this.remove(testPanel);
+        this.remove(button_1);
+        this.setLayout(new BorderLayout());
+        this.add(list1, BorderLayout.PAGE_START);
+        this.add(button1, BorderLayout.LINE_START);
+        this.add(button2, BorderLayout.LINE_END);
+        this.revalidate();
+        this.repaint();
+    }
+    public void mySecondViews(){
+        this.remove(list1);
+        this.remove(button1);
+        this.remove(button2);
+        this.setLayout(new BorderLayout());
+        this.add(testPanel, BorderLayout.PAGE_START);
+        this.add(button_1, BorderLayout.PAGE_END);
         this.revalidate();
         this.repaint();
     }
@@ -71,26 +103,23 @@ public class PanelLeft extends JPanel {
     public class MyMouseAdapter extends MouseAdapter{
         @Override
         public void mouseClicked(MouseEvent e) {
-            JList listSource = (JList) e.getSource();
-            if(e.getClickCount()==2){
+            if(e.getClickCount()==2 & e.getSource()==list1) {
+                JList listSource = (JList) e.getSource();
                 int index = listSource.locationToIndex(e.getPoint());
-                if(index>=0){
+                if (index >= 0) {
                     Object objList = listSource.getModel().getElementAt(index);
                     System.out.println(objList.toString());
-                    if(objList.toString().equals("TO-DO")){
-                        System.out.println("!!!!!!!!!!!!!!!!!!!!");
-                        PanelLeft.this.remove(list1);
-                        PanelLeft.this.remove(button1);
-                        PanelLeft.this.remove(button2);
-                        PanelLeft.this.add(testPanel, BorderLayout.PAGE_START);
-                        PanelLeft.this.add(button_1, BorderLayout.LINE_END);
-                        PanelLeft.this.revalidate();
-                        PanelLeft.this.repaint();
+                        //    if(objList.toString().equals("TO-DO")){
+                        //    }
+                    mySecondViews();
                     }
-                }
             }
-        }
+            if(e.getSource()==button_1){
+                myFirstView();
+            }
+            }
     }
+
 
     public class MySaveListener implements ActionListener {
 
