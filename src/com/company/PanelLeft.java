@@ -20,6 +20,8 @@ public class PanelLeft extends JPanel {
     PanelCenter panelCenter = new PanelCenter();
     JButton button1 = new JButton("ADD");
     JButton button2 = new JButton("DEL");
+    JButton button1_1 = new JButton("ADD");
+    JButton button2_2 = new JButton("DEL");
     JButton button_1 = new JButton("BACK");
     JPanel testPanel = new JPanel();
 
@@ -45,13 +47,17 @@ public class PanelLeft extends JPanel {
         this.setPreferredSize(new Dimension(110, 250));
         list1.setPreferredSize(new Dimension(110, 200));
         list2.setPreferredSize(new Dimension(110, 200));
-        testPanel.setPreferredSize(new Dimension(110, 200));
+        testPanel.setPreferredSize(new Dimension(110, 180));
         button1.setPreferredSize(new Dimension(55, 50));
         button2.setPreferredSize(new Dimension(55, 50));
-        button_1.setPreferredSize(new Dimension(110, 50));
+        button_1.setPreferredSize(new Dimension(110, 35));
         button1.setFont(new Font("Arial", Font.PLAIN, 9));
         button2.setFont(new Font("Arial", Font.PLAIN, 9));
+        button1_1.setFont(new Font("Arial", Font.PLAIN, 9));
+        button2_2.setFont(new Font("Arial", Font.PLAIN, 9));
         button_1.setFont(new Font("Arial", Font.PLAIN, 9));
+        button1_1.setPreferredSize(new Dimension(55, 35));
+        button2_2.setPreferredSize(new Dimension(55, 35));
 
         this.setLayout(new BorderLayout());
         this.add(list1, BorderLayout.PAGE_START);
@@ -80,8 +86,7 @@ public class PanelLeft extends JPanel {
         this.repaint();
     }
     public void myFirstView(){
-        this.remove(testPanel);
-        this.remove(button_1);
+        this.removeAll();
         this.setLayout(new BorderLayout());
         this.add(list1, BorderLayout.PAGE_START);
         this.add(button1, BorderLayout.LINE_START);
@@ -90,12 +95,16 @@ public class PanelLeft extends JPanel {
         this.repaint();
     }
     public void mySecondViews(){
-        this.remove(list1);
-        this.remove(button1);
-        this.remove(button2);
+        this.removeAll();
+        JPanel borderPanel = new JPanel();
+        borderPanel.setLayout(new BorderLayout());
+        borderPanel.setPreferredSize(new Dimension(110, 70));
+        borderPanel.add(button1_1, BorderLayout.LINE_START);
+        borderPanel.add(button2_2, BorderLayout.LINE_END);
+        borderPanel.add(button_1, BorderLayout.PAGE_END);
         this.setLayout(new BorderLayout());
         this.add(testPanel, BorderLayout.PAGE_START);
-        this.add(button_1, BorderLayout.PAGE_END);
+        this.add(borderPanel, BorderLayout.PAGE_END);
         this.revalidate();
         this.repaint();
     }
