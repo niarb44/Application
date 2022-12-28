@@ -6,9 +6,8 @@ import java.awt.*;
 public class TabbedPane extends JTabbedPane {
 
     private Panels panels = new Panels();
-    private Panels panels2;
 
-    private JPanel panel1 = new JPanel();
+    private JPanel contentPanel = new JPanel();
     private TextArea text = new TextArea("TEXT");
 
     TabbedPane(){
@@ -18,12 +17,11 @@ public class TabbedPane extends JTabbedPane {
     public void initComponentsPanel(){
 
         this.setPreferredSize(new Dimension(390, 250));
-        panel1.add(text);
+        text.setPreferredSize(new Dimension(390, 250));
+        contentPanel.add(text);
 
         this.addTab("tab 1", panels);
-        //this.setMnemonicAt(0, KeyEvent.VK_1);
-        panels2 = new Panels();
-        this.addTab("tab 2", panel1);
+        this.addTab("tab 2", contentPanel);
 
     }
 

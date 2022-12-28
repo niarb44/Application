@@ -25,23 +25,23 @@ public class MenuBarApplication extends JMenuBar {
         JMenuItem subMenu2 = menuFile.add(menuItemSave);
         subMenu2.addActionListener(mySaveListener);
 
-        subMenu.addActionListener(e -> System.out.println("Tu jest kod, który tworzy nowy plik"));
+        subMenu.addActionListener(e -> System.out.println("Here is the code that creates a new file"));
 
         menuFile.addSeparator();
-        JMenu menuOpcje = new JMenu("Options");
-        menuFile.add(menuOpcje);
+        JMenu optionMenu = new JMenu("Options");
+        menuFile.add(optionMenu);
 
-        menuOpcje.add(menuItemV1);
-        menuOpcje.add(menuItemV2);
-        menuOpcje.add(onlyForRead);
+        optionMenu.add(menuItemV1);
+        optionMenu.add(menuItemV2);
+        optionMenu.add(onlyForRead);
 
         onlyForRead.addActionListener(e -> {
-            onlyForRead.setEnabled(!onlyForRead.isSelected()); // sprawdzić czy działa
+            onlyForRead.setEnabled(!onlyForRead.isSelected());
         });
 
-        JMenu menuPomoc = this.add(new JMenu("Test"));
+        JMenu helpMenu = this.add(new JMenu("Test"));
 
-        menuPomoc.add(new JMenuItem("FAQ"));
+        helpMenu.add(new JMenuItem("FAQ"));
 
     }
 

@@ -22,8 +22,14 @@ public class Panels extends JPanel {
         this.add(panelLeft);
         this.add(panelCenter);
 
-        panelLeft.button1.addActionListener(myListener);
-        panelLeft.button2.addActionListener(myListener);
+        panelLeft.buttonAdd.addActionListener(myListener);
+        panelLeft.buttonDel.addActionListener(myListener);
+        panelLeft.buttonAdd2.addActionListener(myListener);
+
+        panelLeft.cut.addActionListener(myListener);
+        panelLeft.copy.addActionListener(myListener);
+        panelLeft.paste.addActionListener(myListener);
+
 
     }
 
@@ -31,12 +37,19 @@ public class Panels extends JPanel {
         String title = "";
         @Override
         public void actionPerformed(ActionEvent e) {
-            if(e.getSource()==panelLeft.button1) {
+            if(e.getSource()==panelLeft.buttonAdd) {
                 title = panelCenter.textCenter1.getText();
                 panelLeft.changeAddViews(title);
             }
-            if(e.getSource()==panelLeft.button2) {
+            if(e.getSource()==panelLeft.buttonDel) {
                 panelLeft.changeDelView();
+            }
+            if(e.getSource()==panelLeft.buttonAdd2) {
+                title = panelCenter.textCenter1.getText();
+                panelLeft.changeAddViews2(title);
+            }
+            if(e.getSource()==panelLeft.cut || e.getSource()==panelLeft.copy || e.getSource()==panelLeft.paste) {
+                System.out.println(e.getSource().hashCode());
             }
         }
 

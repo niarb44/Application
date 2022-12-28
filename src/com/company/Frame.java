@@ -8,6 +8,8 @@ public class Frame extends JFrame {
     private MenuBarApplication menuBarApplication = new MenuBarApplication();
     private TabbedPane tabbedPane = new TabbedPane();
 
+    NoteFiles noteFiles = new NoteFiles();
+
     Frame(){
         setComponentsFrame();
     }
@@ -25,6 +27,8 @@ public class Frame extends JFrame {
         this.setResizable(false);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
+
+        noteFiles.noteFilesExecute();
 
     }
 

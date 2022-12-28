@@ -18,15 +18,15 @@ public class PanelLeft extends JPanel {
     JList<String> list1 = new JList<>(labels1);
     JList<String> list2 = new JList<>(labels2);
     PanelCenter panelCenter = new PanelCenter();
-    JButton button1 = new JButton("ADD");
-    JButton button2 = new JButton("DEL");
-    JButton button1_1 = new JButton("ADD");
-    JButton button2_2 = new JButton("DEL");
-    JButton button_1 = new JButton("BACK");
+    JButton buttonAdd = new JButton("ADD");
+    JButton buttonDel = new JButton("DEL");
+    JButton buttonAdd2 = new JButton("ADD");
+    JPopupMenu buttonDel2 = new JPopupMenu("del");
+    JButton buttonBack = new JButton("BACK");
     JPanel testPanel = new JPanel();
-
-
-
+    JMenuItem cut = new JMenuItem("Cut");
+    JMenuItem copy = new JMenuItem("Copy");
+    JMenuItem paste = new JMenuItem("Paste");
     MyMouseAdapter myMouseAdapter = new MyMouseAdapter();
 
     PanelLeft() {
@@ -34,38 +34,41 @@ public class PanelLeft extends JPanel {
     }
 
     public void initComponentsPanel() {
+
+        buttonDel2.add(cut); buttonDel2.add(copy); buttonDel2.add(paste);
+        testPanel.setComponentPopupMenu(buttonDel2);
         labels1.addElement("TO-DO");
         labels1.addElement("Finance");
         labels1.addElement("Images");
         labels1.addElement("Scratchpad");
         labels2.addElement("Test-1");
         labels2.addElement("Test-2");
-        testPanel.add(new JCheckBox("Test-1"));
-        testPanel.add(new JCheckBox("Test-2"));
+        testPanel.add(new JCheckBox("Task-1"));
+        testPanel.add(new JCheckBox("Task-2"));
 
 
         this.setPreferredSize(new Dimension(110, 250));
         list1.setPreferredSize(new Dimension(110, 200));
         list2.setPreferredSize(new Dimension(110, 200));
-        testPanel.setPreferredSize(new Dimension(110, 180));
-        button1.setPreferredSize(new Dimension(55, 50));
-        button2.setPreferredSize(new Dimension(55, 50));
-        button_1.setPreferredSize(new Dimension(110, 35));
-        button1.setFont(new Font("Arial", Font.PLAIN, 9));
-        button2.setFont(new Font("Arial", Font.PLAIN, 9));
-        button1_1.setFont(new Font("Arial", Font.PLAIN, 9));
-        button2_2.setFont(new Font("Arial", Font.PLAIN, 9));
-        button_1.setFont(new Font("Arial", Font.PLAIN, 9));
-        button1_1.setPreferredSize(new Dimension(55, 35));
-        button2_2.setPreferredSize(new Dimension(55, 35));
+        testPanel.setPreferredSize(new Dimension(110, 150));
+        buttonAdd.setPreferredSize(new Dimension(55, 50));
+        buttonDel.setPreferredSize(new Dimension(55, 50));
+        buttonBack.setPreferredSize(new Dimension(110, 50));
+        buttonAdd.setFont(new Font("Arial", Font.PLAIN, 9));
+        buttonDel.setFont(new Font("Arial", Font.PLAIN, 9));
+        buttonAdd2.setFont(new Font("Arial", Font.PLAIN, 9));
+        //buttonDel2.setFont(new Font("Arial", Font.PLAIN, 9));
+        buttonBack.setFont(new Font("Arial", Font.PLAIN, 9));
+        buttonAdd2.setPreferredSize(new Dimension(55, 50));
+        buttonDel2.setPreferredSize(new Dimension(55, 50));
 
         this.setLayout(new BorderLayout());
         this.add(list1, BorderLayout.PAGE_START);
-        this.add(button1, BorderLayout.LINE_START);
-        this.add(button2, BorderLayout.LINE_END);
+        this.add(buttonAdd, BorderLayout.LINE_START);
+        this.add(buttonDel, BorderLayout.LINE_END);
 
         list1.addMouseListener(myMouseAdapter);
-        button_1.addMouseListener(myMouseAdapter);
+        buttonBack.addMouseListener(myMouseAdapter);
     }
 
    public void changeAddViews(String ss){
@@ -85,12 +88,29 @@ public class PanelLeft extends JPanel {
         this.revalidate();
         this.repaint();
     }
+    public void changeAddViews2(String ss){
+        testPanel.add(new JCheckBox(ss));
+        this.remove(testPanel);
+        this.add(testPanel);
+        this.revalidate();
+        this.repaint();
+    }
+    public void changeDelView2(){
+        int selectedIndex = list1.getSelectedIndex();
+        if (selectedIndex != -1) {
+            labels1.remove(selectedIndex);
+        }
+        this.remove(list1);
+        this.add(list1, BorderLayout.PAGE_START);
+        this.revalidate();
+        this.repaint();
+    }
     public void myFirstView(){
         this.removeAll();
         this.setLayout(new BorderLayout());
         this.add(list1, BorderLayout.PAGE_START);
-        this.add(button1, BorderLayout.LINE_START);
-        this.add(button2, BorderLayout.LINE_END);
+        this.add(buttonAdd, BorderLayout.LINE_START);
+        this.add(buttonDel, BorderLayout.LINE_END);
         this.revalidate();
         this.repaint();
     }
@@ -98,10 +118,10 @@ public class PanelLeft extends JPanel {
         this.removeAll();
         JPanel borderPanel = new JPanel();
         borderPanel.setLayout(new BorderLayout());
-        borderPanel.setPreferredSize(new Dimension(110, 70));
-        borderPanel.add(button1_1, BorderLayout.LINE_START);
-        borderPanel.add(button2_2, BorderLayout.LINE_END);
-        borderPanel.add(button_1, BorderLayout.PAGE_END);
+        borderPanel.setPreferredSize(new Dimension(110, 100));
+        borderPanel.add(buttonAdd2, BorderLayout.LINE_START);
+        borderPanel.add(buttonDel2, BorderLayout.LINE_END);
+        borderPanel.add(buttonBack, BorderLayout.PAGE_END);
         this.setLayout(new BorderLayout());
         this.add(testPanel, BorderLayout.PAGE_START);
         this.add(borderPanel, BorderLayout.PAGE_END);
@@ -118,12 +138,10 @@ public class PanelLeft extends JPanel {
                 if (index >= 0) {
                     Object objList = listSource.getModel().getElementAt(index);
                     System.out.println(objList.toString());
-                        //    if(objList.toString().equals("TO-DO")){
-                        //    }
                     mySecondViews();
                     }
             }
-            if(e.getSource()==button_1){
+            if(e.getSource()==buttonBack){
                 myFirstView();
             }
             }
@@ -139,7 +157,6 @@ public class PanelLeft extends JPanel {
             PanelLeft.this.add(testPanel);
             PanelLeft.this.revalidate();
             PanelLeft.this.repaint();
-            //System.out.println(labels2.getElementAt(2));
 
             try{
                 ObjectOutputStream outS = new ObjectOutputStream(new FileOutputStream(panelCenter.textCenter1.getText()+".txt"));

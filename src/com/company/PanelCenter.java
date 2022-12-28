@@ -5,8 +5,8 @@ import java.awt.*;
 
 public class PanelCenter extends JPanel {
 
-    protected JTextField textCenter1 = new JTextField("Tytuł");
-    private JTextField textCenter2 = new JTextField("test");
+    protected JTextField textCenter1 = new JTextField("Title");
+    private JTextField textCenter2 = new JTextField("Contents");
 
 
     PanelCenter(){
