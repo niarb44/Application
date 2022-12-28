@@ -17,7 +17,7 @@ public class NoteFiles {
                 buffer.append(RAF.readLine()+System.lineSeparator());
             }
             String contents = buffer.toString();
-            System.out.println("Contents of the file: "+contents);
+            System.out.println("Contents of the file : "+contents);
 
 
             RAF.close();
