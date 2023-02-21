@@ -31,7 +31,7 @@ public class PanelLeft extends JPanel {
     MyMouseAdapter myMouseAdapter = new MyMouseAdapter();
     JCheckBox checkBox1 = new JCheckBox("Task-1");
     JCheckBox checkBox2 = new JCheckBox("Task-2");
-    Color[] colors = { Color.RED,  Color.RED, Color.RED, Color.RED };
+    int indexChangesColor = 0;
 
     PanelLeft() {
         initComponentsPanel();
@@ -59,15 +59,15 @@ public class PanelLeft extends JPanel {
         testPanel.setPreferredSize(new Dimension(110, 150));
         buttonAdd.setPreferredSize(new Dimension(55, 50));
         buttonDel.setPreferredSize(new Dimension(55, 50));
-        buttonBack.setPreferredSize(new Dimension(110, 50));
+        buttonBack.setPreferredSize(new Dimension(110, 25));
         buttonAdd.setFont(new Font("Arial", Font.PLAIN, 9));
         buttonDel.setFont(new Font("Arial", Font.PLAIN, 9));
         buttonAdd2.setFont(new Font("Arial", Font.PLAIN, 9));
         buttonDel22.setFont(new Font("Arial", Font.PLAIN, 9));
         buttonBack.setFont(new Font("Arial", Font.PLAIN, 9));
-        buttonAdd2.setPreferredSize(new Dimension(55, 50));
+        buttonAdd2.setPreferredSize(new Dimension(55, 25));
         buttonDel2.setPreferredSize(new Dimension(55, 50));
-        buttonDel22.setPreferredSize(new Dimension(55, 50));
+        buttonDel22.setPreferredSize(new Dimension(55, 25));
 
         this.setLayout(new BorderLayout());
         this.add(list1, BorderLayout.PAGE_START);
@@ -76,7 +76,7 @@ public class PanelLeft extends JPanel {
 
         list1.addMouseListener(myMouseAdapter);
         buttonBack.addMouseListener(myMouseAdapter);
-        list2.setCellRenderer(new MyListCellRenderer(colors));
+        list2.setCellRenderer(new MyListCellRenderer());
     }
 
    public void changeAddViews(String ss){
@@ -138,10 +138,13 @@ public class PanelLeft extends JPanel {
         borderPanel.add(buttonAdd2, BorderLayout.LINE_START);
         borderPanel.add(buttonDel22, BorderLayout.LINE_END);
         borderPanel.add(buttonBack, BorderLayout.PAGE_END);
-        this.setLayout(new BorderLayout());
-//        this.add(testPanel, BorderLayout.PAGE_START);
-        this.add(list2, BorderLayout.PAGE_START);
-        this.add(borderPanel, BorderLayout.PAGE_END);
+//        this.setLayout(new BorderLayout());
+////        this.add(testPanel, BorderLayout.PAGE_START);
+//        this.add(list2, BorderLayout.PAGE_START);
+//        this.add(borderPanel, BorderLayout.PAGE_END);
+        this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+        this.add(list2);
+        this.add(borderPanel);
         this.revalidate();
         this.repaint();
     }
@@ -188,20 +191,22 @@ public class PanelLeft extends JPanel {
         }
 
     }
-    public class MyListCellRenderer extends DefaultListCellRenderer {
-
-        private final Color[] colors; // tablica kolorów tła dla każdego elementu
-
-        public MyListCellRenderer(Color[] colors) {
-            this.colors = colors;
-        }
-
+    public class MyListCellRendererChange extends DefaultListCellRenderer {
         @Override
         public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
             Component renderer = super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
-            if (index >= 0 && index < colors.length) {
-                renderer.setBackground(colors[index]); // ustawia kolor tła dla danego elementu
+            if (index == indexChangesColor) {
+                renderer.setBackground(Color.GREEN);
             }
+            return renderer;
+        }
+    }
+
+    public class MyListCellRenderer extends DefaultListCellRenderer {
+        @Override
+        public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
+            Component renderer = super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
+                renderer.setBackground(Color.RED); // ustawia kolor tła dla danego elementu
             return renderer;
         }
     }
