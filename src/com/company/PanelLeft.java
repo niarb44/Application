@@ -133,8 +133,9 @@ public class PanelLeft extends JPanel {
     public void mySecondViews(){
         this.removeAll();
         JPanel borderPanel = new JPanel();
+        JPanel boxPanel = new JPanel();
         borderPanel.setLayout(new BorderLayout());
-        borderPanel.setPreferredSize(new Dimension(110, 100));
+        borderPanel.setPreferredSize(new Dimension(110, 50));
         borderPanel.add(buttonAdd2, BorderLayout.LINE_START);
         borderPanel.add(buttonDel22, BorderLayout.LINE_END);
         borderPanel.add(buttonBack, BorderLayout.PAGE_END);
@@ -143,7 +144,9 @@ public class PanelLeft extends JPanel {
 //        this.add(list2, BorderLayout.PAGE_START);
 //        this.add(borderPanel, BorderLayout.PAGE_END);
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-        this.add(list2);
+        //boxPanel.setPreferredSize(new Dimension(110, 200));
+        boxPanel.add(list2);
+        this.add(boxPanel);
         this.add(borderPanel);
         this.revalidate();
         this.repaint();
