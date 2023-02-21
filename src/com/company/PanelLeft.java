@@ -22,12 +22,16 @@ public class PanelLeft extends JPanel {
     JButton buttonDel = new JButton("DEL");
     JButton buttonAdd2 = new JButton("ADD");
     JPopupMenu buttonDel2 = new JPopupMenu("del");
+    JButton buttonDel22 = new JButton("DEL");
     JButton buttonBack = new JButton("BACK");
     JPanel testPanel = new JPanel();
     JMenuItem cut = new JMenuItem("Cut");
     JMenuItem copy = new JMenuItem("Copy");
     JMenuItem paste = new JMenuItem("Paste");
     MyMouseAdapter myMouseAdapter = new MyMouseAdapter();
+    JCheckBox checkBox1 = new JCheckBox("Task-1");
+    JCheckBox checkBox2 = new JCheckBox("Task-2");
+    Color[] colors = { Color.RED,  Color.RED, Color.RED, Color.RED };
 
     PanelLeft() {
         initComponentsPanel();
@@ -35,7 +39,7 @@ public class PanelLeft extends JPanel {
 
     public void initComponentsPanel() {
 
-        buttonDel2.add(cut); buttonDel2.add(copy); buttonDel2.add(paste);
+        //buttonDel2.add(cut); buttonDel2.add(copy); buttonDel2.add(paste);
         testPanel.setComponentPopupMenu(buttonDel2);
         labels1.addElement("TO-DO");
         labels1.addElement("Finance");
@@ -43,8 +47,10 @@ public class PanelLeft extends JPanel {
         labels1.addElement("Scratchpad");
         labels2.addElement("Test-1");
         labels2.addElement("Test-2");
-        testPanel.add(new JCheckBox("Task-1"));
-        testPanel.add(new JCheckBox("Task-2"));
+//        testPanel.add(new JCheckBox("Task-1"));
+//        testPanel.add(new JCheckBox("Task-2"));
+        testPanel.add(checkBox1);
+        testPanel.add(checkBox2);
 
 
         this.setPreferredSize(new Dimension(110, 250));
@@ -57,10 +63,11 @@ public class PanelLeft extends JPanel {
         buttonAdd.setFont(new Font("Arial", Font.PLAIN, 9));
         buttonDel.setFont(new Font("Arial", Font.PLAIN, 9));
         buttonAdd2.setFont(new Font("Arial", Font.PLAIN, 9));
-        //buttonDel2.setFont(new Font("Arial", Font.PLAIN, 9));
+        buttonDel22.setFont(new Font("Arial", Font.PLAIN, 9));
         buttonBack.setFont(new Font("Arial", Font.PLAIN, 9));
         buttonAdd2.setPreferredSize(new Dimension(55, 50));
         buttonDel2.setPreferredSize(new Dimension(55, 50));
+        buttonDel22.setPreferredSize(new Dimension(55, 50));
 
         this.setLayout(new BorderLayout());
         this.add(list1, BorderLayout.PAGE_START);
@@ -69,6 +76,7 @@ public class PanelLeft extends JPanel {
 
         list1.addMouseListener(myMouseAdapter);
         buttonBack.addMouseListener(myMouseAdapter);
+        list2.setCellRenderer(new MyListCellRenderer(colors));
     }
 
    public void changeAddViews(String ss){
@@ -95,16 +103,24 @@ public class PanelLeft extends JPanel {
         this.revalidate();
         this.repaint();
     }
+
     public void changeDelView2(){
-        int selectedIndex = list1.getSelectedIndex();
-        if (selectedIndex != -1) {
-            labels1.remove(selectedIndex);
-        }
-        this.remove(list1);
-        this.add(list1, BorderLayout.PAGE_START);
-        this.revalidate();
-        this.repaint();
+        testPanel.remove(checkBox1);
+        mySecondViews();
     }
+//    public void changeDelView2(){
+//        int selectedIndex = list1.getSelectedIndex();
+//        if (selectedIndex != -1) {
+//            testPanel.remove(selectedIndex);
+//        }
+//        //labels1.remove(0);
+//        testPanel.remove(1);
+//        //labels1.remove(2);
+//        this.remove(list1);
+//        this.add(list1, BorderLayout.PAGE_START);
+//        this.revalidate();
+//        this.repaint();
+//    }
     public void myFirstView(){
         this.removeAll();
         this.setLayout(new BorderLayout());
@@ -120,10 +136,11 @@ public class PanelLeft extends JPanel {
         borderPanel.setLayout(new BorderLayout());
         borderPanel.setPreferredSize(new Dimension(110, 100));
         borderPanel.add(buttonAdd2, BorderLayout.LINE_START);
-        borderPanel.add(buttonDel2, BorderLayout.LINE_END);
+        borderPanel.add(buttonDel22, BorderLayout.LINE_END);
         borderPanel.add(buttonBack, BorderLayout.PAGE_END);
         this.setLayout(new BorderLayout());
-        this.add(testPanel, BorderLayout.PAGE_START);
+//        this.add(testPanel, BorderLayout.PAGE_START);
+        this.add(list2, BorderLayout.PAGE_START);
         this.add(borderPanel, BorderLayout.PAGE_END);
         this.revalidate();
         this.repaint();
@@ -170,6 +187,23 @@ public class PanelLeft extends JPanel {
 
         }
 
+    }
+    public class MyListCellRenderer extends DefaultListCellRenderer {
+
+        private final Color[] colors; // tablica kolorów tła dla każdego elementu
+
+        public MyListCellRenderer(Color[] colors) {
+            this.colors = colors;
+        }
+
+        @Override
+        public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
+            Component renderer = super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
+            if (index >= 0 && index < colors.length) {
+                renderer.setBackground(colors[index]); // ustawia kolor tła dla danego elementu
+            }
+            return renderer;
+        }
     }
 
     }

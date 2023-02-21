@@ -25,6 +25,7 @@ public class Panels extends JPanel {
         panelLeft.buttonAdd.addActionListener(myListener);
         panelLeft.buttonDel.addActionListener(myListener);
         panelLeft.buttonAdd2.addActionListener(myListener);
+        panelLeft.buttonDel22.addActionListener(myListener);
 
         panelLeft.cut.addActionListener(myListener);
         panelLeft.copy.addActionListener(myListener);
@@ -47,6 +48,10 @@ public class Panels extends JPanel {
             if(e.getSource()==panelLeft.buttonAdd2) {
                 title = panelCenter.textCenter1.getText();
                 panelLeft.changeAddViews2(title);
+            }
+            if(e.getSource()==panelLeft.buttonDel22) {
+                panelLeft.changeDelView2();
+                System.out.println("testDel2");
             }
             if(e.getSource()==panelLeft.cut || e.getSource()==panelLeft.copy || e.getSource()==panelLeft.paste) {
                 System.out.println(e.getSource().hashCode());
