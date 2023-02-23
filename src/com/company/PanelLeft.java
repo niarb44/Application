@@ -9,6 +9,7 @@ import java.awt.event.MouseEvent;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 
 public class PanelLeft extends JPanel {
 
@@ -17,6 +18,7 @@ public class PanelLeft extends JPanel {
     DefaultListModel<String> labels2 = new DefaultListModel<>();
     JList<String> list1 = new JList<>(labels1);
     JList<String> list2 = new JList<>(labels2);
+    ArrayList<Integer> elementsToColor = new ArrayList<Integer>();
     PanelCenter panelCenter = new PanelCenter();
     JButton buttonAdd = new JButton("ADD");
     JButton buttonDel = new JButton("DEL");
@@ -32,12 +34,18 @@ public class PanelLeft extends JPanel {
     JCheckBox checkBox1 = new JCheckBox("Task-1");
     JCheckBox checkBox2 = new JCheckBox("Task-2");
     int indexChangesColor = 0;
+    JPopupMenu popupMenu = new JPopupMenu();
+    JMenuItem jmi1, jmi2;
 
     PanelLeft() {
         initComponentsPanel();
     }
 
     public void initComponentsPanel() {
+
+        popupMenu.add(jmi1= new JMenuItem("Done"));
+        popupMenu.add(new JPopupMenu.Separator());
+        popupMenu.add(jmi2 = new JMenuItem("Not-Done"));
 
         //buttonDel2.add(cut); buttonDel2.add(copy); buttonDel2.add(paste);
         testPanel.setComponentPopupMenu(buttonDel2);
@@ -77,6 +85,34 @@ public class PanelLeft extends JPanel {
         list1.addMouseListener(myMouseAdapter);
         buttonBack.addMouseListener(myMouseAdapter);
         list2.setCellRenderer(new MyListCellRenderer());
+
+        list2.addMouseListener(new MouseAdapter() {
+                                  public void mouseClicked(MouseEvent me) {
+                                      JList theList = (JList) me.getSource();
+                                      indexChangesColor = theList.locationToIndex(me.getPoint());
+                                      if (SwingUtilities.isRightMouseButton(me)
+                                              ) {
+                                          popupMenu.show(list2, me.getX(), me.getY());
+                                      }
+                                  }
+                              }
+        );
+
+        jmi1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                elementsToColor.add(indexChangesColor);
+                list2.setCellRenderer(new MyListCellRenderer());
+            }
+        });
+        jmi2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                elementsToColor.remove(indexChangesColor);
+                list2.setCellRenderer(new MyListCellRenderer());
+            }
+        });
+
     }
 
    public void changeAddViews(String ss){
@@ -198,7 +234,7 @@ public class PanelLeft extends JPanel {
         @Override
         public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
             Component renderer = super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
-            if (index == indexChangesColor) {
+            if (index == 1) {
                 renderer.setBackground(Color.GREEN);
             }
             return renderer;
@@ -209,10 +245,16 @@ public class PanelLeft extends JPanel {
         @Override
         public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
             Component renderer = super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
-                renderer.setBackground(Color.RED); // ustawia kolor tła dla danego elementu
+            renderer.setBackground(Color.RED); // ustawia kolor tła dla danego elementu
+            for(int x : elementsToColor){
+                if(index == x){
+                    renderer.setBackground(Color.GREEN);
+                }
+            }
             return renderer;
         }
     }
+
 
     }
 
