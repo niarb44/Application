@@ -27,9 +27,6 @@ public class Panels extends JPanel {
         panelLeft.buttonAdd2.addActionListener(myListener);
         panelLeft.buttonDel22.addActionListener(myListener);
 
-        panelLeft.cut.addActionListener(myListener);
-        panelLeft.copy.addActionListener(myListener);
-        panelLeft.paste.addActionListener(myListener);
 
 
     }

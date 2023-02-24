@@ -19,6 +19,7 @@ public class PanelLeft extends JPanel {
     JList<String> list1 = new JList<>(labels1);
     JList<String> list2 = new JList<>(labels2);
     ArrayList<Integer> elementsToColor = new ArrayList<Integer>();
+    ArrayList<Integer> elementsToColorTemporary = new ArrayList<Integer>();
     PanelCenter panelCenter = new PanelCenter();
     JButton buttonAdd = new JButton("ADD");
     JButton buttonDel = new JButton("DEL");
@@ -36,6 +37,8 @@ public class PanelLeft extends JPanel {
     int indexChangesColor = 0;
     JPopupMenu popupMenu = new JPopupMenu();
     JMenuItem jmi1, jmi2;
+    JPanel borderPanel = new JPanel();
+    JPanel boxPanel = new JPanel();
 
     PanelLeft() {
         initComponentsPanel();
@@ -132,30 +135,64 @@ public class PanelLeft extends JPanel {
         this.repaint();
     }
     public void changeAddViews2(String ss){
-        testPanel.add(new JCheckBox(ss));
-        this.remove(testPanel);
-        this.add(testPanel);
+        labels2.addElement(ss);
+        this.remove(boxPanel);
+        this.add(boxPanel);
+        this.remove(borderPanel);
+        this.add(borderPanel);
         this.revalidate();
         this.repaint();
     }
 
-    public void changeDelView2(){
-        testPanel.remove(checkBox1);
-        mySecondViews();
-    }
 //    public void changeDelView2(){
-//        int selectedIndex = list1.getSelectedIndex();
-//        if (selectedIndex != -1) {
-//            testPanel.remove(selectedIndex);
-//        }
-//        //labels1.remove(0);
-//        testPanel.remove(1);
-//        //labels1.remove(2);
-//        this.remove(list1);
-//        this.add(list1, BorderLayout.PAGE_START);
-//        this.revalidate();
-//        this.repaint();
+//        testPanel.remove(checkBox1);
+//        mySecondViews();
 //    }
+    public void changeDelView2(){
+        Integer selectedIndex = list2.getSelectedIndex();
+        System.out.println(elementsToColor);
+        elementsToColorTemporary.clear();
+        for(int x : elementsToColor){
+            elementsToColorTemporary.add(x);
+        }
+        System.out.println(elementsToColor);
+        System.out.println(elementsToColorTemporary);
+
+        for(int y : elementsToColor){
+            if(selectedIndex < y){
+                elementsToColorTemporary.remove(Integer.valueOf(y));
+                elementsToColorTemporary.add(y-1);
+            }
+            else if(selectedIndex.equals(y)){
+                elementsToColorTemporary.remove(Integer.valueOf(y));
+            }
+        }
+        System.out.println(elementsToColor);
+        System.out.println(elementsToColorTemporary);
+        elementsToColor.clear();
+        for(int z : elementsToColorTemporary){
+            elementsToColor.add(z);
+        }
+        System.out.println(elementsToColor);
+
+
+        if (selectedIndex != -1) {
+            labels2.remove(selectedIndex);
+        }
+        System.out.println(elementsToColor);
+        this.remove(boxPanel);
+        System.out.println(elementsToColor);
+        this.remove(borderPanel);
+        System.out.println(elementsToColor);
+        this.add(boxPanel);
+        System.out.println(elementsToColor);
+        this.add(borderPanel);
+        System.out.println(elementsToColor);
+        this.revalidate();
+        System.out.println(elementsToColor);
+        this.repaint();
+        System.out.println(elementsToColor);
+    }
     public void myFirstView(){
         this.removeAll();
         this.setLayout(new BorderLayout());
@@ -167,8 +204,6 @@ public class PanelLeft extends JPanel {
     }
     public void mySecondViews(){
         this.removeAll();
-        JPanel borderPanel = new JPanel();
-        JPanel boxPanel = new JPanel();
         borderPanel.setLayout(new BorderLayout());
         borderPanel.setPreferredSize(new Dimension(110, 50));
         borderPanel.add(buttonAdd2, BorderLayout.LINE_START);
@@ -234,7 +269,8 @@ public class PanelLeft extends JPanel {
         @Override
         public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
             Component renderer = super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
-            renderer.setBackground(Color.RED); // ustawia kolor tła dla danego elementu
+
+            renderer.setBackground(Color.RED);
             for(int x : elementsToColor){
                 if(index == x){
                     renderer.setBackground(Color.GREEN);
