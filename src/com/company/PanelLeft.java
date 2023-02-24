@@ -88,11 +88,10 @@ public class PanelLeft extends JPanel {
 
         list2.addMouseListener(new MouseAdapter() {
                                   public void mouseClicked(MouseEvent me) {
-                                      JList theList = (JList) me.getSource();
-                                      indexChangesColor = theList.locationToIndex(me.getPoint());
-                                      if (SwingUtilities.isRightMouseButton(me)
-                                              ) {
+                                      if (SwingUtilities.isRightMouseButton(me)) {
                                           popupMenu.show(list2, me.getX(), me.getY());
+                                          JList theList = (JList) me.getSource();
+                                          indexChangesColor = theList.locationToIndex(me.getPoint());
                                       }
                                   }
                               }
@@ -108,7 +107,7 @@ public class PanelLeft extends JPanel {
         jmi2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                elementsToColor.remove(indexChangesColor);
+                elementsToColor.remove(Integer.valueOf(indexChangesColor));
                 list2.setCellRenderer(new MyListCellRenderer());
             }
         });
@@ -229,16 +228,6 @@ public class PanelLeft extends JPanel {
 
         }
 
-    }
-    public class MyListCellRendererChange extends DefaultListCellRenderer {
-        @Override
-        public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
-            Component renderer = super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
-            if (index == 1) {
-                renderer.setBackground(Color.GREEN);
-            }
-            return renderer;
-        }
     }
 
     public class MyListCellRenderer extends DefaultListCellRenderer {
