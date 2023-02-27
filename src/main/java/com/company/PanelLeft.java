@@ -20,7 +20,7 @@ public class PanelLeft extends JPanel {
     JList<String> list2 = new JList<>(labels2);
     ArrayList<Integer> elementsToColor = new ArrayList<Integer>();
     ArrayList<Integer> elementsToColorTemporary = new ArrayList<Integer>();
-    PanelCenter panelCenter = new PanelCenter();
+    com.company.PanelCenter panelCenter = new com.company.PanelCenter();
     JButton buttonAdd = new JButton("ADD");
     JButton buttonDel = new JButton("DEL");
     JButton buttonAdd2 = new JButton("ADD");
