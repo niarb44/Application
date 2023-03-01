@@ -16,11 +16,16 @@ public class PanelLeft extends JPanel {
 
     DefaultListModel<String> labels1 = new DefaultListModel<>();
     DefaultListModel<String> labels2 = new DefaultListModel<>();
-    JList<String> list1 = new JList<>(labels1);
-    JList<String> list2 = new JList<>(labels2);
+    JList<String> list1;
+    JList<String> list2;
+    JList<String> list2DO;
+    JList<String> list2Finance;
+    JList<String> list2Images;
+    JList<String> list2Scratchpad;
     ArrayList<Integer> elementsToColor = new ArrayList<Integer>();
     ArrayList<Integer> elementsToColorTemporary = new ArrayList<Integer>();
     com.company.PanelCenter panelCenter = new com.company.PanelCenter();
+    JButton buttonChoose = new JButton("CHOOSE-IT");
     JButton buttonAdd = new JButton("ADD");
     JButton buttonDel = new JButton("DEL");
     JButton buttonAdd2 = new JButton("ADD");
@@ -39,12 +44,21 @@ public class PanelLeft extends JPanel {
     JMenuItem jmi1, jmi2;
     JPanel borderPanel = new JPanel();
     JPanel boxPanel = new JPanel();
+    FirstCategories firstCategories = new FirstCategories();
+    int whichList = 0;
 
     PanelLeft() {
         initComponentsPanel();
     }
 
     public void initComponentsPanel() {
+
+        list1 = new JList<>(firstCategories);
+        list2 = new JList<>(firstCategories.secondCategories);
+        list2DO = new JList<>(firstCategories.secondCategoriesDO);
+        list2Finance = new JList<>(firstCategories.secondCategoriesFinance);
+        list2Images = new JList<>(firstCategories.secondCategoriesImages);
+        list2Scratchpad = new JList<>(firstCategories.secondCategoriesScratchpad);
 
         popupMenu.add(jmi1= new JMenuItem("Done"));
         popupMenu.add(new JPopupMenu.Separator());
@@ -67,10 +81,16 @@ public class PanelLeft extends JPanel {
         this.setPreferredSize(new Dimension(110, 250));
         list1.setPreferredSize(new Dimension(110, 200));
         list2.setPreferredSize(new Dimension(110, 200));
+        list2Finance.setPreferredSize(new Dimension(110, 200));
+        list2DO.setPreferredSize(new Dimension(110, 200));
+        list2Images.setPreferredSize(new Dimension(110, 200));
+        list2Scratchpad.setPreferredSize(new Dimension(110, 200));
         testPanel.setPreferredSize(new Dimension(110, 150));
+        buttonChoose.setPreferredSize(new Dimension(110, 50));
         buttonAdd.setPreferredSize(new Dimension(55, 50));
         buttonDel.setPreferredSize(new Dimension(55, 50));
         buttonBack.setPreferredSize(new Dimension(110, 25));
+        buttonChoose.setFont(new Font("Arial", Font.PLAIN, 9));
         buttonAdd.setFont(new Font("Arial", Font.PLAIN, 9));
         buttonDel.setFont(new Font("Arial", Font.PLAIN, 9));
         buttonAdd2.setFont(new Font("Arial", Font.PLAIN, 9));
@@ -82,14 +102,60 @@ public class PanelLeft extends JPanel {
 
         this.setLayout(new BorderLayout());
         this.add(list1, BorderLayout.PAGE_START);
-        this.add(buttonAdd, BorderLayout.LINE_START);
-        this.add(buttonDel, BorderLayout.LINE_END);
+//        this.add(buttonAdd, BorderLayout.LINE_START);
+//        this.add(buttonDel, BorderLayout.LINE_END);
+        this.add(buttonChoose, BorderLayout.PAGE_END);
 
         list1.addMouseListener(myMouseAdapter);
         buttonBack.addMouseListener(myMouseAdapter);
+        buttonChoose.addMouseListener(myMouseAdapter);
         list2.setCellRenderer(new MyListCellRenderer());
+        list2DO.setCellRenderer(new MyListCellRenderer());
+        list2Finance.setCellRenderer(new MyListCellRenderer());
+        list2Images.setCellRenderer(new MyListCellRenderer());
+        list2Scratchpad.setCellRenderer(new MyListCellRenderer());
 
         list2.addMouseListener(new MouseAdapter() {
+                                  public void mouseClicked(MouseEvent me) {
+                                      if (SwingUtilities.isRightMouseButton(me)) {
+                                          popupMenu.show(list2, me.getX(), me.getY());
+                                          JList theList = (JList) me.getSource();
+                                          indexChangesColor = theList.locationToIndex(me.getPoint());
+                                      }
+                                  }
+                              }
+        );
+        list2DO.addMouseListener(new MouseAdapter() {
+                                  public void mouseClicked(MouseEvent me) {
+                                      if (SwingUtilities.isRightMouseButton(me)) {
+                                          popupMenu.show(list2, me.getX(), me.getY());
+                                          JList theList = (JList) me.getSource();
+                                          indexChangesColor = theList.locationToIndex(me.getPoint());
+                                      }
+                                  }
+                              }
+        );
+        list2Finance.addMouseListener(new MouseAdapter() {
+                                  public void mouseClicked(MouseEvent me) {
+                                      if (SwingUtilities.isRightMouseButton(me)) {
+                                          popupMenu.show(list2, me.getX(), me.getY());
+                                          JList theList = (JList) me.getSource();
+                                          indexChangesColor = theList.locationToIndex(me.getPoint());
+                                      }
+                                  }
+                              }
+        );
+        list2Images.addMouseListener(new MouseAdapter() {
+                                  public void mouseClicked(MouseEvent me) {
+                                      if (SwingUtilities.isRightMouseButton(me)) {
+                                          popupMenu.show(list2, me.getX(), me.getY());
+                                          JList theList = (JList) me.getSource();
+                                          indexChangesColor = theList.locationToIndex(me.getPoint());
+                                      }
+                                  }
+                              }
+        );
+        list2Scratchpad.addMouseListener(new MouseAdapter() {
                                   public void mouseClicked(MouseEvent me) {
                                       if (SwingUtilities.isRightMouseButton(me)) {
                                           popupMenu.show(list2, me.getX(), me.getY());
@@ -105,6 +171,10 @@ public class PanelLeft extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 elementsToColor.add(indexChangesColor);
                 list2.setCellRenderer(new MyListCellRenderer());
+                list2DO.setCellRenderer(new MyListCellRenderer());
+                list2Finance.setCellRenderer(new MyListCellRenderer());
+                list2Images.setCellRenderer(new MyListCellRenderer());
+                list2Scratchpad.setCellRenderer(new MyListCellRenderer());
             }
         });
         jmi2.addActionListener(new ActionListener() {
@@ -112,6 +182,10 @@ public class PanelLeft extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 elementsToColor.remove(Integer.valueOf(indexChangesColor));
                 list2.setCellRenderer(new MyListCellRenderer());
+                list2DO.setCellRenderer(new MyListCellRenderer());
+                list2Finance.setCellRenderer(new MyListCellRenderer());
+                list2Images.setCellRenderer(new MyListCellRenderer());
+                list2Scratchpad.setCellRenderer(new MyListCellRenderer());
             }
         });
 
@@ -197,8 +271,9 @@ public class PanelLeft extends JPanel {
         this.removeAll();
         this.setLayout(new BorderLayout());
         this.add(list1, BorderLayout.PAGE_START);
-        this.add(buttonAdd, BorderLayout.LINE_START);
-        this.add(buttonDel, BorderLayout.LINE_END);
+//        this.add(buttonAdd, BorderLayout.LINE_START);
+//        this.add(buttonDel, BorderLayout.LINE_END);
+        this.add(buttonChoose, BorderLayout.PAGE_END);
         this.revalidate();
         this.repaint();
     }
@@ -215,7 +290,20 @@ public class PanelLeft extends JPanel {
 //        this.add(borderPanel, BorderLayout.PAGE_END);
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         //boxPanel.setPreferredSize(new Dimension(110, 200));
-        boxPanel.add(list2);
+
+        if(whichList==1){
+            boxPanel.add(list2DO);
+        }
+        else if(whichList==2){
+            boxPanel.add(list2Finance);
+        }
+        else if(whichList==3){
+            boxPanel.add(list2Images);
+        }
+        else if(whichList==4){
+            boxPanel.add(list2Scratchpad);
+        }
+
         this.add(boxPanel);
         this.add(borderPanel);
         this.revalidate();
@@ -230,12 +318,27 @@ public class PanelLeft extends JPanel {
                 int index = listSource.locationToIndex(e.getPoint());
                 if (index >= 0) {
                     Object objList = listSource.getModel().getElementAt(index);
+                    if(objList.toString().equals("TO-DO")){
+                        whichList = 1;
+                    }
+                    else if(objList.toString().equals("Finance")){
+                        whichList = 2;
+                    }
+                    else if(objList.toString().equals("Images")){
+                        whichList = 3;
+                    }
+                    else if(objList.toString().equals("Scratchpad")){
+                        whichList = 4;
+                    }
                     System.out.println(objList.toString());
                     mySecondViews();
                     }
             }
             if(e.getSource()==buttonBack){
                 myFirstView();
+            }
+            if(e.getSource()==buttonChoose){
+                mySecondViews();
             }
             }
     }
