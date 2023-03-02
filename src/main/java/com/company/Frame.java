@@ -28,7 +28,7 @@ public class Frame extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
 
-        noteFiles.noteFilesExecute();
+        //noteFiles.noteFilesExecute2();
 
     }
 
