@@ -109,6 +109,7 @@ public class PanelLeft extends JPanel {
         list1.addMouseListener(myMouseAdapter);
         buttonBack.addMouseListener(myMouseAdapter);
         buttonChoose.addMouseListener(myMouseAdapter);
+
         list2.setCellRenderer(new MyListCellRenderer());
         list2DO.setCellRenderer(new MyListCellRenderer());
         list2Finance.setCellRenderer(new MyListCellRenderer());
@@ -128,7 +129,7 @@ public class PanelLeft extends JPanel {
         list2DO.addMouseListener(new MouseAdapter() {
                                   public void mouseClicked(MouseEvent me) {
                                       if (SwingUtilities.isRightMouseButton(me)) {
-                                          popupMenu.show(list2, me.getX(), me.getY());
+                                          popupMenu.show(list2DO, me.getX(), me.getY());
                                           JList theList = (JList) me.getSource();
                                           indexChangesColor = theList.locationToIndex(me.getPoint());
                                       }
@@ -138,7 +139,7 @@ public class PanelLeft extends JPanel {
         list2Finance.addMouseListener(new MouseAdapter() {
                                   public void mouseClicked(MouseEvent me) {
                                       if (SwingUtilities.isRightMouseButton(me)) {
-                                          popupMenu.show(list2, me.getX(), me.getY());
+                                          popupMenu.show(list2Finance, me.getX(), me.getY());
                                           JList theList = (JList) me.getSource();
                                           indexChangesColor = theList.locationToIndex(me.getPoint());
                                       }
@@ -148,7 +149,7 @@ public class PanelLeft extends JPanel {
         list2Images.addMouseListener(new MouseAdapter() {
                                   public void mouseClicked(MouseEvent me) {
                                       if (SwingUtilities.isRightMouseButton(me)) {
-                                          popupMenu.show(list2, me.getX(), me.getY());
+                                          popupMenu.show(list2Images, me.getX(), me.getY());
                                           JList theList = (JList) me.getSource();
                                           indexChangesColor = theList.locationToIndex(me.getPoint());
                                       }
@@ -158,7 +159,7 @@ public class PanelLeft extends JPanel {
         list2Scratchpad.addMouseListener(new MouseAdapter() {
                                   public void mouseClicked(MouseEvent me) {
                                       if (SwingUtilities.isRightMouseButton(me)) {
-                                          popupMenu.show(list2, me.getX(), me.getY());
+                                          popupMenu.show(list2Scratchpad, me.getX(), me.getY());
                                           JList theList = (JList) me.getSource();
                                           indexChangesColor = theList.locationToIndex(me.getPoint());
                                       }
@@ -209,10 +210,35 @@ public class PanelLeft extends JPanel {
         this.repaint();
     }
     public void changeAddViews2(String ss){
-        labels2.addElement(ss);
+//        labels2.addElement(ss);
+//        this.remove(boxPanel);
+//        this.add(boxPanel);
+//        this.remove(borderPanel);
+//        this.add(borderPanel);
+//        ****this.remove(list2);
+//        this.add(list2, BorderLayout.PAGE_START);
         this.remove(boxPanel);
+        if(whichList==1){
+            firstCategories.secondCategoriesDO.addElement(ss);
+            this.remove(list2DO);
+            boxPanel.add(list2DO);
+        }
+        else if(whichList==2){
+            firstCategories.secondCategoriesFinance.addElement(ss);
+            this.remove(list2Finance);
+            boxPanel.add(list2Finance);
+        }
+        else if(whichList==3){
+            firstCategories.secondCategoriesImages.addElement(ss);
+            this.remove(list2Images);
+            boxPanel.add(list2Images);
+        }
+        else if(whichList==4){
+            firstCategories.secondCategoriesScratchpad.addElement(ss);
+            this.remove(list2Scratchpad);
+            boxPanel.add(list2Scratchpad);
+        }
         this.add(boxPanel);
-        this.remove(borderPanel);
         this.add(borderPanel);
         this.revalidate();
         this.repaint();
@@ -223,14 +249,25 @@ public class PanelLeft extends JPanel {
 //        mySecondViews();
 //    }
     public void changeDelView2(){
-        Integer selectedIndex = list2.getSelectedIndex();
-        System.out.println(elementsToColor);
+        Integer selectedIndex = list2.getSelectedIndex(); // ?????????????????????
+
+        if(whichList==1){
+            selectedIndex = list2DO.getSelectedIndex();
+        }
+        else if(whichList==2){
+            selectedIndex = list2Finance.getSelectedIndex();
+        }
+        else if(whichList==3){
+            selectedIndex = list2Images.getSelectedIndex();
+        }
+        else if(whichList==4){
+            selectedIndex = list2Scratchpad.getSelectedIndex();
+        }
+
         elementsToColorTemporary.clear();
         for(int x : elementsToColor){
             elementsToColorTemporary.add(x);
         }
-        System.out.println(elementsToColor);
-        System.out.println(elementsToColorTemporary);
 
         for(int y : elementsToColor){
             if(selectedIndex < y){
@@ -241,31 +278,32 @@ public class PanelLeft extends JPanel {
                 elementsToColorTemporary.remove(Integer.valueOf(y));
             }
         }
-        System.out.println(elementsToColor);
-        System.out.println(elementsToColorTemporary);
         elementsToColor.clear();
         for(int z : elementsToColorTemporary){
             elementsToColor.add(z);
         }
-        System.out.println(elementsToColor);
 
 
         if (selectedIndex != -1) {
-            labels2.remove(selectedIndex);
+            if(whichList==1){
+                firstCategories.secondCategoriesDO.remove(selectedIndex);
+            }
+            else if(whichList==2){
+                firstCategories.secondCategoriesFinance.remove(selectedIndex);
+            }
+            else if(whichList==3){
+                firstCategories.secondCategoriesImages.remove(selectedIndex);
+            }
+            else if(whichList==4){
+                firstCategories.secondCategoriesScratchpad.remove(selectedIndex);
+            }
         }
-        System.out.println(elementsToColor);
         this.remove(boxPanel);
-        System.out.println(elementsToColor);
         this.remove(borderPanel);
-        System.out.println(elementsToColor);
         this.add(boxPanel);
-        System.out.println(elementsToColor);
         this.add(borderPanel);
-        System.out.println(elementsToColor);
         this.revalidate();
-        System.out.println(elementsToColor);
         this.repaint();
-        System.out.println(elementsToColor);
     }
     public void myFirstView(){
         this.removeAll();
@@ -292,15 +330,19 @@ public class PanelLeft extends JPanel {
         //boxPanel.setPreferredSize(new Dimension(110, 200));
 
         if(whichList==1){
+            boxPanel.removeAll();
             boxPanel.add(list2DO);
         }
         else if(whichList==2){
+            boxPanel.removeAll();
             boxPanel.add(list2Finance);
         }
         else if(whichList==3){
+            boxPanel.removeAll();
             boxPanel.add(list2Images);
         }
         else if(whichList==4){
+            boxPanel.removeAll();
             boxPanel.add(list2Scratchpad);
         }
 
