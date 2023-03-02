@@ -2,13 +2,13 @@ package com.company;
 
 import javax.swing.*;
 
+// Class with main categories
 public class FirstCategories extends DefaultListModel<String> {
 
-    SecondCategories secondCategories = new SecondCategories();
     SecondCategories secondCategoriesDO = new SecondCategories();
     SecondCategories secondCategoriesFinance = new SecondCategories();
     SecondCategories secondCategoriesImages = new SecondCategories();
-    SecondCategories secondCategoriesScratchpad = new SecondCategories();
+    SecondCategories secondCategoriesOther = new SecondCategories();
 
     public FirstCategories() {
         initComponents();
@@ -16,20 +16,9 @@ public class FirstCategories extends DefaultListModel<String> {
 
     public void initComponents(){
         this.addElement("TO-DO");
-        this.addElement("Finance");
-        this.addElement("Images");
-        this.addElement("Scratchpad");
-
-        secondCategoriesFinance.add("AddedTest");
-        secondCategoriesDO.remove(1);
-
+        this.addElement("FINANCE");
+        this.addElement("SHOPPING");
+        this.addElement("OTHER");
     }
-
-//    public void addFirst(String name){
-//        this.addElement(name);
-//    }
-//
-//    public void deleteFirst(int element){
-//        this.remove(element);
-//    }
 }
+
