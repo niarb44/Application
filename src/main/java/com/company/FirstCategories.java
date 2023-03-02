@@ -4,7 +4,6 @@ import javax.swing.*;
 
 public class FirstCategories extends DefaultListModel<String> {
 
-    SecondCategories secondCategories = new SecondCategories();
     SecondCategories secondCategoriesDO = new SecondCategories();
     SecondCategories secondCategoriesFinance = new SecondCategories();
     SecondCategories secondCategoriesImages = new SecondCategories();

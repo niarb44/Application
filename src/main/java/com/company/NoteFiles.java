@@ -1,29 +1,21 @@
 package com.company;
 
+import org.apache.commons.io.FileUtils;
+import java.io.File;
 import java.io.IOException;
-import java.io.RandomAccessFile;
 
 public class NoteFiles {
 
-    public void noteFilesExecute() {
+    public void noteFilesExecute2(String title, String title2){
+            String data2 = title2;
 
-        try {
+            File file = new File(title+".txt");
 
-            RandomAccessFile RAF = new RandomAccessFile("nowy.txt", "rw");
-            StringBuffer buffer = new StringBuffer();
-
-
-            while(RAF.getFilePointer() < RAF.length()) {
-                buffer.append(RAF.readLine()+System.lineSeparator());
+            try {
+                FileUtils.write(file, title2, "UTF-8");
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-            String contents = buffer.toString();
-            System.out.println("Contents of the file : "+contents);
-
-
-            RAF.close();
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        }
     }
 
 }

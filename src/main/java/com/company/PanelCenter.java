@@ -2,25 +2,53 @@ package com.company;
 
 import javax.swing.*;
 import java.awt.*;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import javax.swing.Timer;
+import com.toedter.calendar.JCalendar;
+
+
 
 public class PanelCenter extends JPanel {
+    private Timer timer;
 
-    protected JTextField textCenter1 = new JTextField("Title");
-    private JTextField textCenter2 = new JTextField("Contents");
+    JLabel testLabel = new JLabel();
+    JPanel timePanel = new JPanel();
 
+    JCalendar jCalender = new JCalendar();
+
+    
 
     PanelCenter(){
         initComponentsPanel();
     }
 
-
     public void initComponentsPanel(){
+
+        testLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        testLabel.setFont(new Font("Arial", Font.BOLD, 25));
+        timer = new Timer(1000, e -> updateClock());
+        timer.start();
+
         this.setPreferredSize(new Dimension(280, 250));
-        textCenter1.setPreferredSize(new Dimension(280, 50));
-        textCenter2.setPreferredSize(new Dimension(280, 200));
+        testLabel.setPreferredSize(new Dimension(280, 50));
+        timePanel.setPreferredSize(new Dimension(280, 200));
+        jCalender.setPreferredSize(new Dimension(280, 200));
+
+
+        timePanel.add(jCalender, BorderLayout.CENTER);
 
         this.setLayout(new BorderLayout());
-        this.add(textCenter1, BorderLayout.PAGE_START);
-        this.add(textCenter2, BorderLayout.PAGE_END);
+        this.add(testLabel, BorderLayout.PAGE_START);
+        this.add(timePanel, BorderLayout.PAGE_END);
+
+
     }
+
+    public void updateClock(){
+        String time = new SimpleDateFormat("HH:mm:ss").format(Calendar.getInstance().getTime());
+        testLabel.setText(time);
+    }
+
+
 }
