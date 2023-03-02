@@ -2,7 +2,7 @@ package com.company;
 
 import javax.swing.*;
 
-
+// Bar with a drop-down menu
 public class MenuBarApplication extends JMenuBar {
 
     private JCheckBoxMenuItem onlyForRead = new JCheckBoxMenuItem("only for read");
@@ -10,9 +10,6 @@ public class MenuBarApplication extends JMenuBar {
     private JMenuItem menuItemSave = new JMenuItem("Save");
     private JMenuItem menuItemV1 = new JMenuItem("Version 1");
     private JMenuItem menuItemV2 = new JMenuItem("Version 2");
-
-    PanelLeft panelLeft = new PanelLeft();
-    PanelLeft.MySaveListener mySaveListener = panelLeft.new MySaveListener();
 
     MenuBarApplication() {
         initComponents();
@@ -23,7 +20,6 @@ public class MenuBarApplication extends JMenuBar {
         JMenu menuFile = this.add(new JMenu("File"));
         JMenuItem subMenu = menuFile.add(menuItemNew);
         JMenuItem subMenu2 = menuFile.add(menuItemSave);
-        subMenu2.addActionListener(mySaveListener);
 
         subMenu.addActionListener(e -> System.out.println("Here is the code that creates a new file"));
 
@@ -39,12 +35,9 @@ public class MenuBarApplication extends JMenuBar {
             onlyForRead.setEnabled(!onlyForRead.isSelected());
         });
 
-        JMenu helpMenu = this.add(new JMenu("Test"));
+        JMenu helpMenu = this.add(new JMenu("Help"));
 
         helpMenu.add(new JMenuItem("FAQ"));
 
     }
-
-
-
 }

@@ -3,12 +3,11 @@ package com.company;
 import javax.swing.*;
 import java.awt.*;
 
+// Aplication frame
 public class Frame extends JFrame {
 
     private MenuBarApplication menuBarApplication = new MenuBarApplication();
     private TabbedPane tabbedPane = new TabbedPane();
-
-    NoteFiles noteFiles = new NoteFiles();
 
     Frame(){
         setComponentsFrame();
@@ -16,7 +15,7 @@ public class Frame extends JFrame {
 
     public void setComponentsFrame(){
 
-        this.setTitle("Application");
+        this.setTitle("TO-DO APPLICATION");
         this.setLocation(400, 250);
         this.setPreferredSize(new Dimension(430, 350));
 
@@ -27,9 +26,5 @@ public class Frame extends JFrame {
         this.setResizable(false);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setVisible(true);
-
-        noteFiles.noteFilesExecute();
-
     }
-
 }

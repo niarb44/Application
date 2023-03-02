@@ -1,29 +1,41 @@
 package com.company;
 
-import java.io.IOException;
-import java.io.RandomAccessFile;
+import org.apache.commons.io.FileUtils;
 
+import javax.swing.*;
+import java.awt.*;
+import java.io.File;
+import java.io.IOException;
+
+// Class with file saving(File with task contents)
 public class NoteFiles {
 
-    public void noteFilesExecute() {
+    boolean isFileExists = false;
 
-        try {
+    public void noteFilesExecute2(String title, String title2, int whichList){
 
-            RandomAccessFile RAF = new RandomAccessFile("nowy.txt", "rw");
-            StringBuffer buffer = new StringBuffer();
+            File file = new File(title+"-"+whichList+".txt");
 
-
-            while(RAF.getFilePointer() < RAF.length()) {
-                buffer.append(RAF.readLine()+System.lineSeparator());
+            if(file.exists()){
+                JDialog dialog = new JDialog();
+                JLabel label = new JLabel("THE TASK ALREADY EXISTS!!!!");
+                label.setForeground(Color.RED);
+                dialog.add(label);
+                dialog.pack();
+                dialog.setLocationRelativeTo(null);
+                dialog.setModal(true);
+                Container contentPane = dialog.getContentPane();
+                contentPane.setBackground(Color.BLACK);
+                dialog.setVisible(true);
+                isFileExists=true;
             }
-            String contents = buffer.toString();
-            System.out.println("Contents of the file : "+contents);
-
-
-            RAF.close();
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        }
+            else{
+                try {
+                    FileUtils.write(file, title2, "UTF-8");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                isFileExists=false;
+            }
     }
-
 }

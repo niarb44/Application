@@ -2,6 +2,7 @@ package com.company;
 
 import javax.swing.*;
 
+//Class with tasks
 public class SecondCategories extends DefaultListModel<String> {
 
     public SecondCategories() {
@@ -13,13 +14,7 @@ public class SecondCategories extends DefaultListModel<String> {
         this.addElement("Test-2");
     }
 
-    public void add(String name){
-        this.addElement(name);
-    }
 
-    public void delete(int element){
-        this.remove(element);
-    }
 
 
 }
