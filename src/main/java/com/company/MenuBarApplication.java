@@ -2,7 +2,9 @@ package com.company;
 
 import javax.swing.*;
 
-// Bar with a drop-down menu
+/**
+ * Bar with a drop-down menu.
+ */
 public class MenuBarApplication extends JMenuBar {
 
     private JCheckBoxMenuItem onlyForRead = new JCheckBoxMenuItem("only for read");

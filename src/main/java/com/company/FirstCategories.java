@@ -2,7 +2,9 @@ package com.company;
 
 import javax.swing.*;
 
-// Class with main categories
+/**
+ * Class with main categories.
+ */
 public class FirstCategories extends DefaultListModel<String> {
 
     SecondCategories secondCategoriesDO = new SecondCategories();

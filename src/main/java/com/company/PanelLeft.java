@@ -3,7 +3,9 @@ package com.company;
 import javax.swing.*;
 import java.awt.*;
 
-// left side of frame(in first view) - with categories of tasks
+/**
+ * Left side of frame(in first view) - with categories of tasks.
+ */
 public class PanelLeft extends JPanel {
 
     JList<String> list1;

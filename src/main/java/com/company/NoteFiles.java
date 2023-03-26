@@ -7,7 +7,9 @@ import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 
-// Class with file saving(File with task contents)
+/**
+ * Class with file saving(File with task contents).
+ */
 public class NoteFiles {
 
     boolean isFileExists = false;

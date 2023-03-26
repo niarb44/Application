@@ -9,7 +9,9 @@ import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.IOException;
 
-// Class with tabs, the content of the task is displayed on the second tab
+/**
+ * Class with tabs, the content of the task is displayed on the second tab.
+ */
 public class TabbedPane extends JTabbedPane {
 
     private Panels panels = new Panels();

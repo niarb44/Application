@@ -7,7 +7,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-// class to manage frame content
+/**
+ * Class to manage frame contents.
+ */
 public class Panels extends JPanel {
 
     private PanelLeft panelLeft = new PanelLeft();

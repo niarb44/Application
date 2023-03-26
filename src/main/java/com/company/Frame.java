@@ -3,7 +3,10 @@ package com.company;
 import javax.swing.*;
 import java.awt.*;
 
-// Aplication frame
+
+/**
+ * Application frame.
+ */
 public class Frame extends JFrame {
 
     private MenuBarApplication menuBarApplication = new MenuBarApplication();

@@ -3,7 +3,9 @@ package com.company;
 import javax.swing.*;
 import java.awt.*;
 
-// center of frame(in second view) - with space to enter title and contents of task
+/**
+ * Center of frame(in second view) - with space to enter title and contents of task.
+ */
 public class PanelCenterV2 extends JPanel {
 
     JTextField textCenter1 = new JTextField("Title");

@@ -9,7 +9,9 @@ import java.awt.event.MouseEvent;
 import java.io.File;
 import java.util.ArrayList;
 
-// left side of frame(in second view) - with tasks
+/**
+ * Left side of frame(in second view) - with tasks.
+ */
 public class PanelLeftV2 extends JPanel {
 
     JList<String> list2DO;
@@ -117,18 +119,22 @@ public class PanelLeftV2 extends JPanel {
         if(whichList==1){
             selectedIndex = list2DO.getSelectedIndex();
             selectedName = list2DO.getSelectedValue();
+            firstCategories.secondCategoriesDO.remove(selectedIndex);
         }
         else if(whichList==2){
             selectedIndex = list2Finance.getSelectedIndex();
             selectedName = list2Finance.getSelectedValue();
+            firstCategories.secondCategoriesFinance.remove(selectedIndex);
         }
         else if(whichList==3){
             selectedIndex = list2Images.getSelectedIndex();
             selectedName = list2Images.getSelectedValue();
+            firstCategories.secondCategoriesImages.remove(selectedIndex);
         }
         else if(whichList==4){
             selectedIndex = list2Other.getSelectedIndex();
             selectedName = list2Other.getSelectedValue();
+            firstCategories.secondCategoriesOther.remove(selectedIndex);
         }
 
         File file = new File(selectedName+"-"+whichList+".txt");
@@ -146,26 +152,8 @@ public class PanelLeftV2 extends JPanel {
                 elementsToColorTemporary.remove(Integer.valueOf(x));
             }
         }
-
         elementsToColor.clear();
         elementsToColor.addAll(elementsToColorTemporary);
-
-
-        if (selectedIndex != -1) {
-            if(whichList==1){
-                firstCategories.secondCategoriesDO.remove(selectedIndex);
-            }
-            else if(whichList==2){
-                firstCategories.secondCategoriesFinance.remove(selectedIndex);
-            }
-            else if(whichList==3){
-                firstCategories.secondCategoriesImages.remove(selectedIndex);
-            }
-            else if(whichList==4){
-                firstCategories.secondCategoriesOther.remove(selectedIndex);
-            }
-        }
-
     }
 
     public class MyListCellRenderer extends DefaultListCellRenderer {

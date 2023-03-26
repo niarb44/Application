@@ -7,8 +7,9 @@ import java.util.Calendar;
 import javax.swing.Timer;
 import com.toedter.calendar.JCalendar;
 
-
-// center of frame(in first view) - with clock and calender
+/**
+ * Center of frame(in first view) - with clock and calender.
+ */
 public class PanelCenter extends JPanel {
     private Timer timer;
     private JLabel testLabel = new JLabel();

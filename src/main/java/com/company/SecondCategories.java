@@ -2,7 +2,9 @@ package com.company;
 
 import javax.swing.*;
 
-//Class with tasks
+/**
+ * Class with tasks in each category.
+ */
 public class SecondCategories extends DefaultListModel<String> {
 
     public SecondCategories() {
