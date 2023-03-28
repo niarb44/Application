@@ -1,13 +1,13 @@
 <component name="ArtifactManager">
-  <artifact name="Aplikacja:jar">
+  <artifact type="jar" name="Aplikacja:jar">
     <output-path>$PROJECT_DIR$/out/artifacts/Aplikacja_jar</output-path>
-    <root id="root">
-      <element id="archive" name="Aplikacja.jar">
-        <element id="directory" name="META-INF">
-          <element id="file-copy" path="$PROJECT_DIR$/src/main/java/META-INF/MANIFEST.MF" />
-        </element>
-        <element id="module-output" name="Aplikacja" />
+    <root id="archive" name="Aplikacja.jar">
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/src/main/java/META-INF/MANIFEST.MF" />
       </element>
+      <element id="module-output" name="Aplikacja" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/src/main/java/com/company/jcalendar-1.4.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/commons-io/commons-io/2.11.0/commons-io-2.11.0.jar" path-in-jar="/" />
     </root>
   </artifact>
 </component>
