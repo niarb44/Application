@@ -6,7 +6,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
-
+//komentarz
 /**
  * Class with file saving(File with task contents).
  */
