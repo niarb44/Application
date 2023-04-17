@@ -12,10 +12,11 @@ After launching the application, users will see categories of notes with lists o
 
 Features
 This to-do list application includes the following features:
-    *Adding new tasks separately for different categories 
-    * Editing existing tasks 
-    * Marking tasks as done/undone 
-    * Deleting tasks" 
+    
+    -Adding new tasks separately for different categories
+    - Editing existing tasks 
+    - Marking tasks as done/undone 
+    - Deleting tasks" 
     
 Contact
 If you have any questions or issues, please contact the project maintainers at dawid.golebowski@student.wab.edu.pl .
@@ -34,10 +35,11 @@ Po uruchomieniu aplikacji, użytkownicy zobaczą kategorie notatek z listami swo
 
 Funkcje
 Ta aplikacja do zarządzania listą zadań zawiera następujące funkcje:
-    * Dodawanie nowych zadań osobno dla różnych kategorii
-    * Edycja istniejących zadań
-    * Oznaczanie zadań jako wykonane/niewykonane
-    * Usuwanie zadań
+
+    - Dodawanie nowych zadań osobno dla różnych kategorii
+    - Edycja istniejących zadań
+    - Oznaczanie zadań jako wykonane/niewykonane
+    - Usuwanie zadań
     
 Kontakt
 Jeśli masz jakieś pytania lub problemy, skontaktuj się z opiekunami projektu pod adresem dawid.golebowski@student.wab.edu.pl .
