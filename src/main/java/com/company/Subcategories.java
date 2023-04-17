@@ -5,9 +5,9 @@ import javax.swing.*;
 /**
  * Class with tasks in each category.
  */
-public class SecondCategories extends DefaultListModel<String> {
+public class Subcategories extends DefaultListModel<String> {
 
-    public SecondCategories() {
+    public Subcategories() {
         initComponents();
     }
 

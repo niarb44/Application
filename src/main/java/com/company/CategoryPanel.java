@@ -6,13 +6,13 @@ import java.awt.*;
 /**
  * Left side of frame(in first view) - with categories of tasks.
  */
-public class PanelLeft extends JPanel {
+public class CategoryPanel extends JPanel {
 
     JList<String> list1;
     JButton buttonChoose = new JButton("CHOOSE-IT");
-    private FirstCategories firstCategories = new FirstCategories();
+    private final FirstCategories firstCategories = new FirstCategories();
 
-    PanelLeft() {
+    CategoryPanel() {
         initComponentsPanel();
     }
 

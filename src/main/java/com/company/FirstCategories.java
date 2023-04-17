@@ -7,10 +7,10 @@ import javax.swing.*;
  */
 public class FirstCategories extends DefaultListModel<String> {
 
-    SecondCategories secondCategoriesDO = new SecondCategories();
-    SecondCategories secondCategoriesFinance = new SecondCategories();
-    SecondCategories secondCategoriesImages = new SecondCategories();
-    SecondCategories secondCategoriesOther = new SecondCategories();
+    Subcategories secondCategoriesDO = new Subcategories();
+    Subcategories secondCategoriesFinance = new Subcategories();
+    Subcategories secondCategoriesImages = new Subcategories();
+    Subcategories secondCategoriesOther = new Subcategories();
 
     public FirstCategories() {
         initComponents();

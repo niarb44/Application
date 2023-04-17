@@ -2,8 +2,6 @@ package com.company;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
@@ -12,30 +10,29 @@ import java.util.ArrayList;
 /**
  * Left side of frame(in second view) - with tasks.
  */
-public class PanelLeftV2 extends JPanel {
+public class SubcategoryPanel extends JPanel {
 
     JList<String> list2DO;
     JList<String> list2Finance;
     JList<String> list2Images;
     JList<String> list2Other;
-    private ArrayList<Integer> elementsToColor = new ArrayList<>();
-    private ArrayList<Integer> elementsToColorTemporary = new ArrayList<>();
+    private final ArrayList<Integer> elementsToColor = new ArrayList<>();
+    private final ArrayList<Integer> elementsToColorTemporary = new ArrayList<>();
     ArrayList<JList> listOfSecond = new ArrayList<>();
     JButton buttonAdd2 = new JButton("ADD");
     JButton buttonDel22 = new JButton("DEL");
     JButton buttonBack = new JButton("BACK");
     private int indexChangesColor = 0;
-    private JPopupMenu popupMenu = new JPopupMenu();
-    private JMenuItem menuItem1, menuItem2;
-    private JPanel borderPanel = new JPanel();
+    private final JPopupMenu popupMenu = new JPopupMenu();
+    private final JPanel borderPanel = new JPanel();
     JPanel boxPanel = new JPanel();
-    private FirstCategories firstCategories = new FirstCategories();
+    private final FirstCategories firstCategories = new FirstCategories();
     int whichList ;
-    private MyMouseAdapter myMouseAdapter = new MyMouseAdapter();
+    private final MyMouseAdapter myMouseAdapter = new MyMouseAdapter();
 
 
 
-    PanelLeftV2() {
+    SubcategoryPanel() {
         initComponentsPanel();
     }
 
@@ -49,8 +46,10 @@ public class PanelLeftV2 extends JPanel {
         listOfSecond.add(list2Images);
         listOfSecond.add(list2Other);
 
-        popupMenu.add(menuItem1= new JMenuItem("Done"));
+        JMenuItem menuItem1;
+        popupMenu.add(menuItem1 = new JMenuItem("Done"));
         popupMenu.add(new JPopupMenu.Separator());
+        JMenuItem menuItem2;
         popupMenu.add(menuItem2 = new JMenuItem("Not-Done"));
 
         this.setPreferredSize(new Dimension(110, 250));
