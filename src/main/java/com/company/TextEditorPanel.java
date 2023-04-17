@@ -6,12 +6,12 @@ import java.awt.*;
 /**
  * Center of frame(in second view) - with space to enter title and contents of task.
  */
-public class PanelCenterV2 extends JPanel {
+public class TextEditorPanel extends JPanel {
 
     JTextField textCenter1 = new JTextField("Title");
     JTextField textCenter2 = new JTextField("Contents");
 
-    PanelCenterV2(){
+    TextEditorPanel(){
         initComponentsPanel();
     }
 

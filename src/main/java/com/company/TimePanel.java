@@ -10,25 +10,24 @@ import com.toedter.calendar.JCalendar;
 /**
  * Center of frame(in first view) - with clock and calender.
  */
-public class PanelCenter extends JPanel {
-    private Timer timer;
-    private JLabel testLabel = new JLabel();
-    private JPanel timePanel = new JPanel();
-    private JCalendar jCalender = new JCalendar();
+public class TimePanel extends JPanel {
+    private final JLabel timeLabel = new JLabel();
+    private final JPanel timePanel = new JPanel();
+    private final JCalendar jCalender = new JCalendar();
 
-    PanelCenter(){
+    TimePanel(){
         initComponentsPanel();
     }
 
     public void initComponentsPanel(){
 
-        testLabel.setHorizontalAlignment(SwingConstants.CENTER);
-        testLabel.setFont(new Font("Arial", Font.BOLD, 25));
-        timer = new Timer(1000, e -> updateClock());
+        timeLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        timeLabel.setFont(new Font("Arial", Font.BOLD, 25));
+        Timer timer = new Timer(1000, e -> updateClock());
         timer.start();
 
         this.setPreferredSize(new Dimension(280, 250));
-        testLabel.setPreferredSize(new Dimension(280, 50));
+        timeLabel.setPreferredSize(new Dimension(280, 50));
         timePanel.setPreferredSize(new Dimension(280, 200));
         jCalender.setPreferredSize(new Dimension(280, 200));
 
@@ -36,12 +35,12 @@ public class PanelCenter extends JPanel {
         timePanel.add(jCalender, BorderLayout.CENTER);
 
         this.setLayout(new BorderLayout());
-        this.add(testLabel, BorderLayout.PAGE_START);
+        this.add(timeLabel, BorderLayout.PAGE_START);
         this.add(timePanel, BorderLayout.PAGE_END);
     }
 
     public void updateClock(){
         String time = new SimpleDateFormat("HH:mm:ss").format(Calendar.getInstance().getTime());
-        testLabel.setText(time);
+        timeLabel.setText(time);
     }
 }

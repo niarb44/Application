@@ -7,11 +7,10 @@ import javax.swing.*;
  */
 public class MenuBarApplication extends JMenuBar {
 
-    private JCheckBoxMenuItem onlyForRead = new JCheckBoxMenuItem("only for read");
-    private JMenuItem menuItemNew = new JMenuItem("New");
-    private JMenuItem menuItemSave = new JMenuItem("Save");
-    private JMenuItem menuItemV1 = new JMenuItem("Version 1");
-    private JMenuItem menuItemV2 = new JMenuItem("Version 2");
+    private final JCheckBoxMenuItem onlyForRead = new JCheckBoxMenuItem("only for read");
+    private final JMenuItem menuItemNew = new JMenuItem("New");
+    private final JMenuItem menuItemV1 = new JMenuItem("Version 1");
+    private final JMenuItem menuItemV2 = new JMenuItem("Version 2");
 
     MenuBarApplication() {
         initComponents();
@@ -21,7 +20,6 @@ public class MenuBarApplication extends JMenuBar {
 
         JMenu menuFile = this.add(new JMenu("File"));
         JMenuItem subMenu = menuFile.add(menuItemNew);
-        JMenuItem subMenu2 = menuFile.add(menuItemSave);
 
         subMenu.addActionListener(e -> System.out.println("Here is the code that creates a new file"));
 

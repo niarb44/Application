@@ -14,10 +14,10 @@ import java.io.IOException;
  */
 public class TabbedPane extends JTabbedPane {
 
-    private Panels panels = new Panels();
-    private JPanel contentPanel = new JPanel();
-    private TextArea text = new TextArea("TEXT");
-    private MyMouseAdapter myMouseAdapter = new MyMouseAdapter();
+    private final Panels panels = new Panels();
+    private final JPanel contentPanel = new JPanel();
+    private final TextArea text = new TextArea("TEXT");
+    private final MyMouseAdapter myMouseAdapter = new MyMouseAdapter();
 
     TabbedPane(){
         initComponentsPanel();

@@ -12,13 +12,12 @@ import java.awt.event.MouseEvent;
  */
 public class Panels extends JPanel {
 
-    private PanelLeft panelLeft = new PanelLeft();
-    PanelLeftV2 panelLeftV2 = new PanelLeftV2();
-    private PanelCenter panelCenter = new PanelCenter();
-    private PanelCenterV2 panelCenterV2 = new PanelCenterV2();
-    private MyListener myListener = new MyListener();
-    private MyMouseAdapter myMouseAdapter = new MyMouseAdapter();
-    private NoteFiles noteFiles;
+    private final CategoryPanel panelLeft = new CategoryPanel();
+    SubcategoryPanel panelLeftV2 = new SubcategoryPanel();
+    private final TimePanel panelCenter = new TimePanel();
+    private final TextEditorPanel panelCenterV2 = new TextEditorPanel();
+    private final MyListener myListener = new MyListener();
+    private final MyMouseAdapter myMouseAdapter = new MyMouseAdapter();
 
     Panels() {
         setComponentsPanels();
@@ -48,7 +47,7 @@ public class Panels extends JPanel {
         @Override
         public void actionPerformed(ActionEvent e) {
             if(e.getSource()==panelLeftV2.buttonAdd2) {
-                noteFiles = new NoteFiles();
+                NoteFiles noteFiles = new NoteFiles();
                 title = panelCenterV2.textCenter1.getText();
                 title2 = panelCenterV2.textCenter2.getText();
                 noteFiles.noteFilesExecute2(title, title2, panelLeftV2.whichList);
