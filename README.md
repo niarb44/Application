@@ -13,13 +13,15 @@ After launching the application, users will see categories of notes with lists o
 Features
 This to-do list application includes the following features:
     
-    -Adding new tasks separately for different categories
+    - Adding new tasks separately for different categories
     - Editing existing tasks 
     - Marking tasks as done/undone 
     - Deleting tasks" 
     
 Contact
 If you have any questions or issues, please contact the project maintainers at dawid.golebowski@student.wab.edu.pl .
+
+
 
 
 PL:
