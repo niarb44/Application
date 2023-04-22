@@ -32,6 +32,7 @@ Jest to aplikacja okienkowa napisana w Javie służąca do zarządzania notatkam
 
 Instalacja
 Aby zainstalować aplikację, należy pobrać najnowszą wersję z repozytorium GitHub. Po pobraniu, należy wypakować plik i uruchomić plik .jar, aby otworzyć aplikację. Plik jar znajduje się w out\artifacts\Aplikacja_jar\ToDoApplication.jar .
+
 Korzystanie
 Po uruchomieniu aplikacji, użytkownicy zobaczą kategorie notatek z listami swoich obecnych zadań. Aby dodać nowe zadanie, należy wprowadzić tytułu oraz szczegóły zadania, a następnie kliknąć przycisk "ADD" i wprowadzić szczegóły zadania. Aby edytować istniejące zadanie, należy dwukrotnie kliknąć na zadanie, aby otworzyć okno edycji w kolejnej zakładce. Aby oznaczyć zadanie jako wykonane, wystarczy wybrać opcje po kilkinięciu prawego przycisku myszy na danym zadaniu.
 
