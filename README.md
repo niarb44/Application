@@ -18,6 +18,10 @@ This to-do list application includes the following features:
     - Marking tasks as done/undone 
     - Deleting tasks" 
     
+the appearance of the application:
+https://www.youtube.com/watch?v=RnSYXnZVjs8
+    
+    
 Contact:
 If you have any questions or issues, please contact the project maintainers at dawid.golebowski@student.wab.edu.pl .
 
@@ -43,6 +47,9 @@ Ta aplikacja do zarządzania listą zadań zawiera następujące funkcje:
     - Edycja istniejących zadań
     - Oznaczanie zadań jako wykonane/niewykonane
     - Usuwanie zadań
+    
+Wygląd aplikacji:
+https://www.youtube.com/watch?v=RnSYXnZVjs8
     
 Kontakt:
 Jeśli masz jakieś pytania lub problemy, skontaktuj się z opiekunami projektu pod adresem dawid.golebowski@student.wab.edu.pl .
