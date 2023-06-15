@@ -46,7 +46,7 @@ public class TabbedPane extends JTabbedPane {
                 JList theList = (JList) e.getSource();
                 String title = theList.getSelectedValue().toString();
 
-                File file = new File(title+"-"+panels.panelLeftV2.whichList+".txt");
+                File file = new File("TaskFiles/"+title+"-"+panels.panelLeftV2.whichList+".txt");
                 try {
                     content = FileUtils.readFileToString(file, "UTF-8");
                 } catch (IOException error) {

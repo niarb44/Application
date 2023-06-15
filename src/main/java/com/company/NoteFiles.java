@@ -16,7 +16,7 @@ public class NoteFiles {
 
     public void noteFilesExecute2(String title, String title2, int whichList){
 
-            File file = new File(title+"-"+whichList+".txt");
+            File file = new File("TaskFiles/"+title+"-"+whichList+".txt");
 
             if(file.exists()){
                 JDialog dialog = new JDialog();
